@@ -1,0 +1,27 @@
+# File internal yang tidak perlu untuk mahasiswa
+CLAUDE.md
+.claude/
+dokumentasi/
+tasks/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Backup files
+*.bak
+*.backup
+*~
