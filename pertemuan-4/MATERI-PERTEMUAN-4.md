@@ -9,7 +9,7 @@
 ## 📋 TUJUAN PEMBELAJARAN
 
 Setelah pertemuan ini, mahasiswa diharapkan dapat:
-1. Mengintegrasikan minimal 2 sensor dan 2 output dalam satu sistem
+1. Mengintegrasikan minimal 3 sensor dan 3 output dalam satu sistem
 2. Mengatasi masalah troubleshooting yang umum terjadi
 3. Merancang dan merakit maket rumah pintar
 4. Mempresentasikan konsep dan demo sistem
