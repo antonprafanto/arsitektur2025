@@ -309,6 +309,185 @@ void loop() {
 
 ---
 
+## ☁️ BLYNK IoT PLATFORM
+
+### Setup Blynk
+```cpp
+#include <WiFi.h>
+#include <BlynkSimpleEsp32.h>
+
+// Credentials (dari Blynk Console)
+#define BLYNK_TEMPLATE_ID "TMPL4xxxxxxxxx"
+#define BLYNK_TEMPLATE_NAME "Project Name"
+#define BLYNK_AUTH_TOKEN "your-auth-token-32-chars"
+#define BLYNK_PRINT Serial  // Debug ke Serial Monitor
+
+char ssid[] = "WIFI_NAME";
+char pass[] = "WIFI_PASSWORD";
+
+void setup() {
+  Serial.begin(115200);
+  Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
+}
+
+void loop() {
+  Blynk.run();  // WAJIB! Di awal loop()
+}
+```
+
+### Kirim Data ke App (ESP32 → Blynk)
+```cpp
+// Kirim nilai ke Virtual Pin
+Blynk.virtualWrite(V0, suhu);        // Kirim float/int
+Blynk.virtualWrite(V1, "Status OK"); // Kirim string
+
+// Rate limiting (max 10 writes/second)
+unsigned long lastSend = 0;
+void loop() {
+  Blynk.run();
+
+  if (millis() - lastSend >= 2000) {  // Setiap 2 detik
+    lastSend = millis();
+    Blynk.virtualWrite(V0, suhu);
+  }
+}
+```
+
+### Terima Data dari App (Blynk → ESP32)
+```cpp
+// Terima data dari Button/Slider widget
+BLYNK_WRITE(V0) {
+  int value = param.asInt();    // Ambil nilai integer
+  // String str = param.asStr(); // Atau string
+
+  digitalWrite(LED_PIN, value); // Kontrol LED
+  Serial.print("Received: ");
+  Serial.println(value);
+}
+
+// Terima beberapa nilai sekaligus (Joystick)
+BLYNK_WRITE(V1) {
+  int x = param[0].asInt();  // Nilai pertama
+  int y = param[1].asInt();  // Nilai kedua
+}
+```
+
+### Event Saat Connected
+```cpp
+BLYNK_CONNECTED() {
+  // Dipanggil otomatis saat connect ke Blynk
+  Serial.println("Blynk connected!");
+
+  // Sync nilai dari server
+  Blynk.syncVirtual(V0);  // Sync V0
+  Blynk.syncAll();        // Sync semua virtual pin
+}
+```
+
+### Push Notification
+```cpp
+// 1. Buat Event di Blynk Console dulu!
+//    Event Code: high_temp
+//    Enable Notification: ON
+
+// 2. Kirim notification dari kode:
+Blynk.logEvent("high_temp", "Suhu: 35°C");
+
+// Limit: 1 notification/minute, max 100/day
+// Gunakan cooldown:
+unsigned long lastNotif = 0;
+if (millis() - lastNotif >= 60000) {  // 60 detik
+  Blynk.logEvent("high_temp", "Alert!");
+  lastNotif = millis();
+}
+```
+
+### Cek Status Koneksi
+```cpp
+void loop() {
+  Blynk.run();
+
+  if (Blynk.connected()) {
+    // Blynk online
+    Blynk.virtualWrite(V0, data);
+  } else {
+    // Blynk offline
+    Serial.println("Blynk disconnected!");
+  }
+}
+```
+
+### WiFi Reconnect Pattern
+```cpp
+void checkWiFi() {
+  if (WiFi.status() != WL_CONNECTED) {
+    Serial.println("WiFi lost, reconnecting...");
+    WiFi.disconnect();
+    WiFi.begin(ssid, pass);
+
+    int attempts = 0;
+    while (WiFi.status() != WL_CONNECTED && attempts < 20) {
+      delay(500);
+      Serial.print(".");
+      attempts++;
+    }
+
+    if (WiFi.status() == WL_CONNECTED) {
+      Serial.println("\nWiFi reconnected!");
+    }
+  }
+}
+```
+
+### Template Kode Minimal Blynk
+```cpp
+#include <WiFi.h>
+#include <BlynkSimpleEsp32.h>
+
+#define BLYNK_TEMPLATE_ID "TMPLxxxxxxxxx"
+#define BLYNK_TEMPLATE_NAME "MyProject"
+#define BLYNK_AUTH_TOKEN "your-32-char-token"
+
+char ssid[] = "WiFi_Name";
+char pass[] = "WiFi_Pass";
+
+void setup() {
+  Serial.begin(115200);
+  Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
+}
+
+void loop() {
+  Blynk.run();
+}
+
+BLYNK_WRITE(V0) {
+  int value = param.asInt();
+  Serial.println(value);
+}
+
+BLYNK_CONNECTED() {
+  Serial.println("Blynk connected!");
+}
+```
+
+### Virtual Pin Reference
+- **V0-V255**: Virtual pins (tidak ada pin fisik di ESP32)
+- Gunakan untuk komunikasi dengan app Blynk
+- Harus buat Datastream dulu di Blynk Console
+- Datastream types: Integer, Double, String
+
+### Widget → Virtual Pin Mapping (Contoh)
+```
+Gauge (suhu)         → V0 (Double, 0-50)
+Button (LED)         → V1 (Integer, 0-1)
+Slider (threshold)   → V2 (Integer, 0-100)
+Label (status)       → V3 (String)
+LED Indicator (PIR)  → V4 (Integer, 0-1)
+Value Display (hum)  → V5 (Double, 0-100)
+```
+
+---
+
 ## 🎨 TIPS & TRICKS
 
 ### 1. Debouncing Button (Software)

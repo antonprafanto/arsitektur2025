@@ -69,7 +69,13 @@ arsi2025/
 │   └── tugas-03-template-proyek.md    (Template Proyek Akhir)
 │
 ├── pertemuan-4/                       ✅ LENGKAP
-│   └── MATERI-PERTEMUAN-4.md          (Integrasi & Proyek Maket)
+│   ├── MATERI-PERTEMUAN-4.md          (Integrasi & Proyek Maket)
+│   ├── kode-10-blynk-led-control.ino  (Kontrol LED via Blynk)
+│   ├── kode-11-blynk-monitor-suhu.ino (Monitoring DHT11 via App)
+│   ├── kode-12-blynk-smart-home.ino   (Smart Home + Blynk)
+│   ├── kode-13-blynk-wifi-reconnect.ino (WiFi & Blynk Reconnect)
+│   ├── tugas-01-blynk-smart-room.ino  (Solusi Tugas 1)
+│   └── tugas-02-blynk-notifikasi.ino  (Solusi Tugas 2)
 │
 ├── panduan-umum/                      ✅ LENGKAP
 │   ├── CHEAT-SHEET-ARDUINO.md         (Quick Reference)
@@ -122,14 +128,15 @@ arsi2025/
 
 ---
 
-### **Pertemuan 4: Integrasi Sistem & Proyek Maket** (3 SKS)
+### **Pertemuan 4: IoT Cloud Platform & Proyek Maket** (3 SKS)
 **Topik:**
-- Review materi 1-3
-- Troubleshooting praktis
+- Platform IoT Cloud (Blynk)
+- Remote monitoring via smartphone
+- Push notification dan alert system
 - Panduan pembuatan maket
 - Konsultasi proyek kelompok
 
-**Output:** Mahasiswa menyelesaikan proyek maket rumah pintar
+**Output:** Mahasiswa bisa kontrol dan monitor sistem via smartphone + maket rumah pintar
 
 ---
 
@@ -189,8 +196,8 @@ arsi2025/
 - Setiap konsep dijelaskan sebelum praktik
 
 ### ✅ Kode Program Siap Pakai
-- 9 file kode praktikum `.ino` lengkap
-- 10 file solusi tugas (9 `.ino` + 1 template `.md`)
+- 13 file kode praktikum `.ino` lengkap (termasuk 4 materi Blynk IoT)
+- 12 file solusi tugas (11 `.ino` + 1 template `.md`)
 - Bisa langsung di-upload ke ESP32
 - Banyak komentar dan penjelasan
 - Troubleshooting di setiap kode
@@ -252,12 +259,12 @@ Setelah menyelesaikan mata kuliah ini, mahasiswa akan mampu:
 
 | Aspek | Jumlah |
 |-------|--------|
-| **Total File** | 27 file |
+| **Total File** | 33 file |
 | **Materi Pertemuan** | 4 pertemuan |
-| **Kode Praktikum** | 9 file `.ino` |
-| **Solusi Tugas** | 10 file (9 `.ino` + 1 template) |
+| **Kode Praktikum** | 13 file `.ino` (termasuk 4 materi Blynk) |
+| **Solusi Tugas** | 12 file (11 `.ino` + 1 template `.md`) |
 | **Panduan Pendukung** | 2 file (Cheat Sheet + FAQ) |
-| **Total Baris Kode + Dokumentasi** | ~10,000+ baris |
+| **Total Baris Kode + Dokumentasi** | ~12,500+ baris |
 | **Bahasa** | Indonesia 100% |
 | **Lisensi** | Open untuk pendidikan |
 
@@ -285,6 +292,7 @@ Dari `Sketch` → `Include Library` → `Manage Libraries`, install:
 - **Adafruit Unified Sensor**
 - **Adafruit SSD1306**
 - **Adafruit GFX Library**
+- **Blynk** (by Volodymyr Shymanskyy) - untuk Pertemuan 4
 
 ### 4. Install Driver USB
 - **CH340:** https://sparks.gogo.co.nz/ch340.html

@@ -122,6 +122,828 @@ Setelah pertemuan ini, mahasiswa diharapkan dapat:
 
 ---
 
+## 📱 BAGIAN 2A: PLATFORM IoT BLYNK (50 menit)
+
+### Pengenalan: Kenapa Perlu Blynk?
+
+Sampai pertemuan 3, sistem smart building kita sudah bisa:
+- ✅ Baca sensor (DHT11, LDR, PIR)
+- ✅ Kontrol aktuator (Relay, LED, Buzzer)
+- ✅ Display data di OLED
+- ✅ Otomatis berdasarkan threshold
+
+**Tapi... ada masalahnya:**
+- ❌ Harus selalu di depan maket untuk lihat data
+- ❌ Tidak bisa kontrol dari jarak jauh
+- ❌ Tidak ada log/history data
+- ❌ Sulit monitoring real-time
+
+**Solusi: BLYNK IoT Platform!**
+
+Dengan Blynk, kita bisa:
+- ✅ Monitor sensor dari **smartphone** (dari mana saja!)
+- ✅ Kontrol relay dari **smartphone** (nyalakan AC sebelum pulang)
+- ✅ Lihat **grafik historis** suhu/kelembapan
+- ✅ Dapat **notifikasi push** saat suhu tinggi
+- ✅ Buat **dashboard** custom sesuai kebutuhan
+
+---
+
+### A. Apa Itu Blynk?
+
+**Blynk** adalah platform IoT yang memudahkan kita membuat aplikasi mobile untuk mengontrol dan memonitor perangkat IoT (seperti ESP32) **tanpa coding app sendiri**.
+
+**Arsitektur Blynk:**
+
+```
+┌──────────────────────────────────────────────────────┐
+│                  EKOSISTEM BLYNK                     │
+├──────────────────────────────────────────────────────┤
+│                                                      │
+│  [1] HARDWARE (ESP32)                                │
+│      ┌─────────────────┐                             │
+│      │  ESP32 + Sensor │                             │
+│      │   - DHT11       │                             │
+│      │   - LDR         │                             │
+│      │   - Relay       │                             │
+│      └────────┬────────┘                             │
+│               │ WiFi                                 │
+│               ↓                                      │
+│  [2] BLYNK CLOUD                                     │
+│      ┌─────────────────┐                             │
+│      │  Blynk Server   │                             │
+│      │  - Simpan data  │                             │
+│      │  - Routing      │                             │
+│      │  - Push notif   │                             │
+│      └────────┬────────┘                             │
+│               │ Internet                             │
+│               ↓                                      │
+│  [3] SMARTPHONE APP                                  │
+│      ┌─────────────────┐                             │
+│      │  Blynk App      │                             │
+│      │  - Dashboard    │                             │
+│      │  - Widgets      │                             │
+│      │  - Grafik       │                             │
+│      └─────────────────┘                             │
+│                                                      │
+└──────────────────────────────────────────────────────┘
+```
+
+**Keunggulan Blynk:**
+1. **Gratis** untuk project mahasiswa (unlimited devices!)
+2. **Mudah** - Drag & drop widget, no coding app
+3. **Real-time** - Data update langsung
+4. **Cloud-based** - Akses dari mana saja (ada internet)
+5. **Professional** - Dipakai industri sungguhan
+
+**Free Plan vs Paid Plan:**
+- **Free:** 2 templates, unlimited devices, 100 datastreams → **Cukup banget untuk project!**
+- **Paid:** 10 templates, unlimited, advanced features → Untuk profesional
+
+---
+
+### B. Komponen Blynk
+
+**1. Template**
+- Blueprint untuk jenis device
+- Contoh: "Smart Home Monitor", "Greenhouse Controller"
+- Satu template bisa untuk banyak device (50 kamar = 1 template)
+
+**2. Device**
+- ESP32 fisik yang terhubung
+- Setiap device punya Auth Token unik
+- Contoh: "ESP32_Kamar_101", "ESP32_Ruang_Tamu"
+
+**3. Datastream**
+- Jalur data antara ESP32 dan App
+- 3 tipe:
+  - **Virtual Pin** (V0, V1, V2, ..., V255) → **Paling sering dipakai**
+  - Digital Pin (D2, D3, ...) → Jarang dipakai
+  - Analog Pin (A0, A1, ...) → Jarang dipakai
+
+**Virtual Pin itu apa?**
+- Pin software (bukan pin fisik ESP32)
+- Bisa kirim data apa saja (suhu, kelembapan, status, teks)
+- Flexible: satu virtual pin bisa untuk suhu, V1 untuk kelembapan, dst.
+
+**4. Widget**
+- Komponen UI di dashboard
+- Macam-macam widget:
+
+| Widget | Fungsi | Contoh Use Case |
+|--------|--------|-----------------|
+| **Button** | Tombol ON/OFF | Kontrol relay |
+| **Switch** | Toggle switch | Nyala/mati lampu |
+| **Slider** | Geser nilai | Set threshold suhu |
+| **Gauge** | Tampilan meter | Tampil suhu 0-50°C |
+| **Value Display** | Tampil angka | Kelembapan 65% |
+| **Chart** | Grafik historis | Grafik suhu 24 jam |
+| **LED** | Indikator status | Hijau=AC ON, Merah=OFF |
+| **Label** | Tampil teks | Status: "Ruangan Dingin" |
+| **Notification** | Push notification | "Suhu >30°C!" |
+
+---
+
+### C. Setup Blynk Step-by-Step
+
+#### Langkah 1: Install Blynk App
+
+**Android:**
+- Buka Google Play Store
+- Cari "Blynk IoT"
+- Install app yang icon-nya logo putih/hijau
+- **PENTING:** Bukan "Blynk Legacy" (yang lama)!
+
+**iOS:**
+- Buka App Store
+- Cari "Blynk IoT"
+- Install
+
+---
+
+#### Langkah 2: Registrasi Akun
+
+1. Buka Blynk app
+2. Tap **"Create New Account"**
+3. Isi:
+   - Email (gunakan email aktif!)
+   - Password (min 8 karakter)
+4. Verify email (cek inbox/spam)
+5. Login ke app
+
+---
+
+#### Langkah 3: Buat Template Pertama
+
+**Di Blynk App:**
+
+1. Tap **"+ New Template"**
+2. Isi:
+   - **Name:** "Smart Room Monitor"
+   - **Hardware:** ESP32
+   - **Connection Type:** WiFi
+3. Tap **"Create"**
+
+**Di Blynk Web Console (opsional, lebih lengkap):**
+- Buka https://blynk.cloud
+- Login dengan akun yang sama
+- Pilih **"Templates"** → **"New Template"**
+
+---
+
+#### Langkah 4: Buat Datastream
+
+**Scenario:** Kita ingin monitoring suhu dari DHT11
+
+1. Masuk ke Template yang sudah dibuat
+2. Pilih tab **"Datastreams"**
+3. Tap **"+ New Datastream"** → **"Virtual Pin"**
+4. Isi konfigurasi:
+   - **Name:** Suhu Ruangan
+   - **Pin:** V0
+   - **Data Type:** Double
+   - **Min:** 0
+   - **Max:** 50
+   - **Units:** °C
+5. Tap **"Save"**
+
+Ulangi untuk datastream lain:
+- **V1** → Kelembapan (0-100%)
+- **V2** → Status Relay (0=OFF, 1=ON)
+- **V3** → Intensitas Cahaya (0-4095)
+
+---
+
+#### Langkah 5: Tambah Widget ke Dashboard
+
+**Tambah Gauge untuk Suhu:**
+
+1. Di Template, pilih tab **"Mobile Dashboard"** (atau "Web Dashboard")
+2. Tap **"+ Add Widget"**
+3. Pilih **"Gauge"**
+4. Konfigurasi:
+   - **Title:** Suhu Ruangan
+   - **Datastream:** V0 (Suhu Ruangan)
+   - **Color:** Merah/Orange
+5. Resize widget (drag pojok)
+6. Tap **"Save"**
+
+**Tambah Value Display untuk Kelembapan:**
+
+1. Tap **"+ Add Widget"** lagi
+2. Pilih **"Value Display"**
+3. Konfigurasi:
+   - **Title:** Kelembapan
+   - **Datastream:** V1 (Kelembapan)
+   - **Color:** Biru
+4. Tap **"Save"**
+
+**Tambah Button untuk Kontrol Relay:**
+
+1. Tap **"+ Add Widget"**
+2. Pilih **"Button"**
+3. Konfigurasi:
+   - **Title:** Kontrol AC
+   - **Datastream:** V2 (Status Relay)
+   - **Mode:** Switch (bukan Push)
+   - **ON Label:** "AC ON"
+   - **OFF Label:** "AC OFF"
+4. Tap **"Save"**
+
+---
+
+#### Langkah 6: Buat Device & Dapatkan Auth Token
+
+1. Keluar dari Template editor
+2. Pilih menu **"Devices"**
+3. Tap **"+ New Device"** → **"From Template"**
+4. Pilih template "Smart Room Monitor"
+5. Isi **Device Name:** "ESP32_Ruang_101"
+6. Tap **"Create"**
+
+**PENTING: Simpan 3 Credentials ini!**
+
+Setelah device dibuat, akan muncul:
+
+```
+Template ID:    TMPL4xxxx
+Device Name:    ESP32_Ruang_101
+Auth Token:     abc123def456ghi789jkl
+```
+
+**SALIN** ketiga nilai ini! Akan dipakai di kode Arduino.
+
+**Tips:**
+- Tap tombol **"Copy All"** untuk copy semua
+- Paste ke Notepad/Notes
+- Atau tap tombol **Email** untuk kirim ke email sendiri
+
+---
+
+### D. Install Library Blynk di Arduino IDE
+
+**Langkah 1: Buka Library Manager**
+
+1. Buka Arduino IDE
+2. Menu **Sketch → Include Library → Manage Libraries**
+3. Tunggu loading
+
+**Langkah 2: Install Blynk Library**
+
+1. Di search box, ketik: **"Blynk"**
+2. Cari library: **"Blynk" by Volodymyr Shymanskyy**
+3. Pilih versi terbaru (1.3.2 atau lebih baru)
+4. Klik **"Install"**
+5. Tunggu hingga selesai (ada tulisan "Installed")
+
+**Library WiFi sudah built-in** di ESP32, tidak perlu install.
+
+---
+
+### E. Struktur Kode Blynk Dasar
+
+**Template Minimal:**
+
+```cpp
+// 1. Include library
+#include <WiFi.h>
+#include <BlynkSimpleEsp32.h>
+
+// 2. Credentials WiFi & Blynk
+char ssid[] = "NAMA_WIFI_ANDA";
+char pass[] = "PASSWORD_WIFI";
+char auth[] = "AUTH_TOKEN_DARI_BLYNK";
+
+// 3. Setup - Jalankan sekali
+void setup() {
+  Serial.begin(115200);
+
+  // Koneksi ke Blynk
+  Blynk.begin(auth, ssid, pass);
+  // Fungsi ini akan:
+  // - Connect ke WiFi
+  // - Connect ke Blynk server
+  // - Auto reconnect jika disconnect
+}
+
+// 4. Loop - Jalankan terus
+void loop() {
+  Blynk.run();  // WAJIB! Handle komunikasi Blynk
+
+  // Kode lain di sini...
+}
+```
+
+---
+
+### F. Konsep Penting: Virtual Pin
+
+**1. Kirim Data dari ESP32 ke App (Blynk.virtualWrite)**
+
+```cpp
+// Kirim suhu ke Virtual Pin V0
+float suhu = 28.5;
+Blynk.virtualWrite(V0, suhu);
+
+// Kirim kelembapan ke V1
+int kelembapan = 65;
+Blynk.virtualWrite(V1, kelembapan);
+
+// Kirim teks ke V5
+Blynk.virtualWrite(V5, "Ruangan Dingin");
+```
+
+**Rate Limiting:**
+- Free plan: Max 10 kali per detik per datastream
+- **Best practice:** Kirim data setiap 1-2 detik (jangan setiap loop!)
+- Gunakan timer: `millis()` atau `BlynkTimer`
+
+---
+
+**2. Terima Data dari App ke ESP32 (BLYNK_WRITE)**
+
+Saat user tekan button di app, fungsi ini dipanggil:
+
+```cpp
+// V2 = Button kontrol relay
+BLYNK_WRITE(V2) {
+  int nilaiButton = param.asInt();  // 0=OFF, 1=ON
+
+  if (nilaiButton == 1) {
+    digitalWrite(pinRelay, HIGH);  // Nyalakan relay
+    Serial.println("Relay ON dari app");
+  } else {
+    digitalWrite(pinRelay, LOW);   // Matikan relay
+    Serial.println("Relay OFF dari app");
+  }
+}
+```
+
+**Penjelasan:**
+- `BLYNK_WRITE(V2)` → Fungsi otomatis dipanggil saat V2 berubah
+- `param.asInt()` → Ambil nilai sebagai integer
+- `param.asFloat()` → Ambil nilai sebagai float
+- `param.asString()` → Ambil nilai sebagai string
+
+---
+
+**3. Event Saat Blynk Connected**
+
+```cpp
+BLYNK_CONNECTED() {
+  // Fungsi ini dipanggil saat ESP32 berhasil connect ke Blynk
+  Serial.println("Blynk Connected!");
+
+  // Sync data dari server (ambil nilai widget terakhir)
+  Blynk.syncVirtual(V2);  // Sync button relay
+}
+```
+
+---
+
+### G. Contoh Lengkap: LED Control via Blynk
+
+**Hardware:**
+- ESP32
+- 1x LED
+- 1x Resistor 220Ω
+
+**Wiring:**
+```
+LED Anode (+) → Resistor 220Ω → ESP32 GPIO2
+LED Cathode (-) → ESP32 GND
+```
+
+**Setup Blynk:**
+1. Buat datastream V0 (Digital, 0-1)
+2. Tambah Button widget linked ke V0
+3. Copy Auth Token
+
+**Kode:**
+
+```cpp
+#include <WiFi.h>
+#include <BlynkSimpleEsp32.h>
+
+// WiFi & Blynk credentials
+char ssid[] = "NAMA_WIFI_ANDA";
+char pass[] = "PASSWORD_WIFI";
+char auth[] = "AUTH_TOKEN_ANDA";
+
+// Pin LED
+#define LED_PIN 2
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(LED_PIN, OUTPUT);
+
+  // Koneksi ke Blynk
+  Serial.println("Connecting to Blynk...");
+  Blynk.begin(auth, ssid, pass);
+  Serial.println("Connected!");
+}
+
+void loop() {
+  Blynk.run();  // WAJIB!
+}
+
+// Terima perintah dari button V0
+BLYNK_WRITE(V0) {
+  int value = param.asInt();
+  digitalWrite(LED_PIN, value);
+
+  if (value == 1) {
+    Serial.println("LED ON dari app");
+  } else {
+    Serial.println("LED OFF dari app");
+  }
+}
+```
+
+**Testing:**
+1. Upload kode
+2. Buka Serial Monitor (115200 baud)
+3. Tunggu hingga "Connected!"
+4. Buka Blynk app, tap button
+5. LED harus nyala/mati sesuai button!
+
+---
+
+### H. Fitur-Fitur Blynk Lanjutan
+
+#### 1. Push Notification
+
+Kirim notifikasi ke smartphone saat event tertentu:
+
+```cpp
+// Kirim notifikasi
+Blynk.logEvent("high_temp", "Suhu tinggi: 35°C!");
+```
+
+**Setup di Blynk:**
+1. Buat Event di template: **"high_temp"**
+2. Set message template
+3. Enable notification
+
+**Best Practice:**
+- Jangan spam notifikasi (max 1 notif per menit)
+- Gunakan flag agar tidak notif berulang-ulang
+
+---
+
+#### 2. Chart/Grafik Historis
+
+**Setup:**
+1. Tambah Chart widget
+2. Link ke datastream V0 (suhu)
+3. Set time range: 1 hour, 6 hours, 1 day, dst.
+
+**Kode:** Tidak perlu ubah kode! Blynk otomatis simpan data.
+
+---
+
+#### 3. Timer/Automation
+
+**Di Blynk App:**
+1. Tambah widget **"Automation"**
+2. Buat rule:
+   - **Condition:** Setiap hari jam 18:00
+   - **Action:** Set V2 (relay AC) = 1 (ON)
+
+Sistem otomatis nyalakan AC jam 6 sore!
+
+---
+
+### I. Error Handling & Reconnect Otomatis
+
+**Problem:** WiFi/Blynk sering disconnect, ESP32 hang.
+
+**Solusi:** Gunakan timer dan cek status koneksi.
+
+```cpp
+#include <WiFi.h>
+#include <BlynkSimpleEsp32.h>
+
+char ssid[] = "NAMA_WIFI_ANDA";
+char pass[] = "PASSWORD_WIFI";
+char auth[] = "AUTH_TOKEN";
+
+#define LED_STATUS 2  // LED indikator
+
+unsigned long lastCheck = 0;
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(LED_STATUS, OUTPUT);
+
+  // Koneksi
+  connectBlynk();
+}
+
+void loop() {
+  // Cek koneksi setiap 10 detik
+  if (millis() - lastCheck > 10000) {
+    lastCheck = millis();
+
+    if (!Blynk.connected()) {
+      Serial.println("Blynk disconnected! Reconnecting...");
+      connectBlynk();
+    }
+  }
+
+  // Run Blynk
+  if (Blynk.connected()) {
+    Blynk.run();
+    digitalWrite(LED_STATUS, HIGH);  // LED ON = connected
+  } else {
+    digitalWrite(LED_STATUS, LOW);   // LED OFF = disconnected
+  }
+}
+
+void connectBlynk() {
+  Serial.println("Connecting to WiFi...");
+  WiFi.begin(ssid, pass);
+
+  int attempts = 0;
+  while (WiFi.status() != WL_CONNECTED && attempts < 20) {
+    delay(500);
+    Serial.print(".");
+    attempts++;
+  }
+
+  if (WiFi.status() == WL_CONNECTED) {
+    Serial.println("\nWiFi connected!");
+    Serial.print("IP: ");
+    Serial.println(WiFi.localIP());
+
+    Serial.println("Connecting to Blynk...");
+    Blynk.config(auth);
+    Blynk.connect();
+
+    if (Blynk.connected()) {
+      Serial.println("Blynk connected!");
+    }
+  } else {
+    Serial.println("\nWiFi connection failed!");
+  }
+}
+```
+
+---
+
+### J. Tips & Best Practices
+
+**1. Rate Limiting (PENTING!)**
+
+❌ **JANGAN:**
+```cpp
+void loop() {
+  Blynk.run();
+  float suhu = dht.readTemperature();
+  Blynk.virtualWrite(V0, suhu);  // Kirim 10x/detik! OVERLOAD!
+}
+```
+
+✅ **LAKUKAN:**
+```cpp
+unsigned long lastSend = 0;
+
+void loop() {
+  Blynk.run();
+
+  // Kirim data setiap 2 detik saja
+  if (millis() - lastSend > 2000) {
+    lastSend = millis();
+
+    float suhu = dht.readTemperature();
+    Blynk.virtualWrite(V0, suhu);
+  }
+}
+```
+
+---
+
+**2. Jangan Gunakan delay() di Loop!**
+
+❌ **JANGAN:**
+```cpp
+void loop() {
+  Blynk.run();
+  delay(5000);  // Blynk.run() tidak jalan 5 detik! Disconnect!
+}
+```
+
+✅ **LAKUKAN:** Gunakan `millis()` seperti contoh di atas.
+
+---
+
+**3. Backup Plan: Mode Offline**
+
+Sistem harus tetap jalan meskipun Blynk disconnect!
+
+```cpp
+void loop() {
+  // Sistem otomatis lokal (tetap jalan tanpa Blynk)
+  float suhu = dht.readTemperature();
+  if (suhu > 30) {
+    digitalWrite(relayAC, HIGH);  // AC ON
+  }
+
+  // Kirim ke Blynk (jika connected)
+  if (Blynk.connected()) {
+    Blynk.run();
+
+    if (millis() - lastSend > 2000) {
+      lastSend = millis();
+      Blynk.virtualWrite(V0, suhu);
+    }
+  }
+}
+```
+
+---
+
+**4. WiFi Hotspot dari HP (Backup)**
+
+Jika WiFi kampus/rumah bermasalah:
+
+1. **Nyalakan Hotspot di HP:**
+   - Android: Settings → Network & Internet → Hotspot & tethering
+   - iOS: Settings → Personal Hotspot
+   - Set SSID & Password
+
+2. **Ubah kode:**
+   ```cpp
+   char ssid[] = "Hotspot_HP_Anda";
+   char pass[] = "password_hotspot";
+   ```
+
+3. Upload & test!
+
+**Catatan:** Kuota internet HP akan terpakai (sedikit, ~1-5 MB/jam).
+
+---
+
+### K. Troubleshooting Blynk
+
+#### 1. "WiFi Connection Failed"
+
+**Penyebab:**
+- SSID atau password salah
+- WiFi terlalu jauh
+- WiFi 5GHz (ESP32 hanya support 2.4GHz)
+
+**Solusi:**
+- Cek SSID dan password (case sensitive!)
+- Dekatkan ESP32 ke router
+- Pastikan WiFi 2.4GHz, bukan 5GHz
+- Test dengan WiFi hotspot HP dulu
+
+---
+
+#### 2. "Device Offline" di Blynk App
+
+**Penyebab:**
+- Auth Token salah
+- ESP32 tidak connect ke internet
+- Firewall block port Blynk
+
+**Solusi:**
+- Re-copy Auth Token dari Blynk app
+- Cek `Serial.println(WiFi.localIP())` → jika 0.0.0.0 berarti tidak connect
+- Test dengan hotspot HP
+
+---
+
+#### 3. Data Sensor Tidak Update
+
+**Penyebab:**
+- Rate limiting (kirim terlalu cepat)
+- `Blynk.run()` tidak dipanggil
+- `delay()` blocking `Blynk.run()`
+
+**Solusi:**
+- Kirim data max setiap 1-2 detik
+- Pastikan `Blynk.run()` di loop() tanpa delay
+- Gunakan `millis()` bukan `delay()`
+
+---
+
+#### 4. Widget Button Tidak Respond
+
+**Penyebab:**
+- Datastream tidak match
+- Fungsi `BLYNK_WRITE(Vx)` salah pin
+- ESP32 offline
+
+**Solusi:**
+- Pastikan widget linked ke datastream yang benar
+- Cek `BLYNK_WRITE(V2)` match dengan datastream V2
+- Cek device online di app
+
+---
+
+#### 5. Notifikasi Tidak Masuk
+
+**Penyebab:**
+- Event name salah
+- Notification disabled di HP
+- Limit notifikasi exceeded (max 100/hari free plan)
+
+**Solusi:**
+- Cek event name di `Blynk.logEvent("nama_event")`
+- Enable notification di settings HP
+- Jangan spam notifikasi
+
+---
+
+### L. Integrasi Blynk ke Proyek Maket
+
+**Rekomendasi Penggunaan Blynk di Proyek:**
+
+1. **Monitoring Real-time:**
+   - Suhu, kelembapan, cahaya, status PIR
+   - Tampilkan di Gauge & Value Display
+   - Grafik historis 24 jam
+
+2. **Remote Control:**
+   - Kontrol relay AC, lampu, pompa
+   - Gunakan Button/Switch widget
+   - Bisa kontrol dari rumah saat maket di kampus!
+
+3. **Notifikasi:**
+   - Alert saat suhu >30°C
+   - Alert saat PIR detect gerakan
+   - Alert saat kelembapan <40%
+
+4. **Dashboard Presentasi:**
+   - Buat dashboard menarik dengan warna tema
+   - Susun widget rapi
+   - Tunjukkan ke dosen saat presentasi (impressive!)
+
+---
+
+### M. File Praktikum Blynk
+
+Silakan coba 4 contoh kode praktikum:
+
+1. **kode-10-blynk-led-control.ino**
+   - LED control dasar via Blynk
+   - Belajar Button widget & BLYNK_WRITE()
+
+2. **kode-11-blynk-monitor-suhu.ino**
+   - Monitoring DHT11 real-time
+   - Belajar Gauge, Value Display, Chart widget
+
+3. **kode-12-blynk-smart-home.ino**
+   - Smart home lengkap: DHT11 + LDR + PIR + Relay + OLED + Blynk
+   - Status koneksi di OLED
+   - Multi-sensor monitoring & control
+
+4. **kode-13-blynk-wifi-reconnect.ino**
+   - Demo reconnect otomatis WiFi & Blynk
+   - Best practice error handling
+
+---
+
+### N. Tugas Mahasiswa (Opsional)
+
+**Tugas 1: Smart Room Dashboard**
+- Buat dashboard monitoring ruangan dengan DHT11 + LDR + PIR
+- Widget: Gauge (suhu), Value (kelembapan, cahaya), LED indicator (PIR)
+- **Solusi:** `tugas-01-blynk-smart-room.ino`
+
+**Tugas 2: Push Notification**
+- Kirim notifikasi ke HP saat suhu >30°C
+- Threshold suhu bisa diatur via slider di app
+- **Solusi:** `tugas-02-blynk-notifikasi.ino`
+
+---
+
+### O. Kesimpulan Blynk
+
+✅ **Manfaat Blynk untuk Proyek:**
+- Monitoring dari mana saja (via internet)
+- Dashboard professional
+- Remote control real-time
+- Data logging otomatis
+- Notifikasi push
+- Impressive saat presentasi!
+
+✅ **Yang Perlu Diingat:**
+- Kirim data max 10x/detik (gunakan timer)
+- Jangan gunakan `delay()` di loop
+- Sistem harus tetap jalan offline (failsafe)
+- Test dengan hotspot HP jika WiFi kampus bermasalah
+
+✅ **Next Step:**
+- Coba 4 contoh kode praktikum
+- Integrasikan Blynk ke proyek maket Anda
+- Buat dashboard custom sesuai tema proyek
+- Presentasikan dengan demo live!
+
+---
+
 ## 🔧 BAGIAN 3: TROUBLESHOOTING PRAKTIS (40 menit)
 
 ### Masalah Umum & Solusi

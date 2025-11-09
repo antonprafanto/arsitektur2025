@@ -592,6 +592,263 @@ void loop() {
 
 ---
 
+## 📱 MASALAH BLYNK & WIFI
+
+### ❓ WiFi tidak connect (stuck di "Connecting...")
+
+**Penyebab:**
+- SSID atau password salah
+- WiFi 5GHz (ESP32 hanya support 2.4GHz)
+- Router terlalu jauh
+- Channel WiFi tidak compatible
+
+**Solusi:**
+1. **Cek Credentials:**
+   ```cpp
+   char ssid[] = "NAMA_WIFI_ANDA";  // Case sensitive!
+   char pass[] = "PASSWORD_WIFI_ANDA";
+   ```
+   - SSID harus persis sama (huruf besar/kecil)
+   - Password jangan ada spasi di awal/akhir
+
+2. **Pastikan WiFi 2.4GHz:**
+   - ESP32 tidak support WiFi 5GHz
+   - Cek setting router: enable 2.4GHz
+   - Atau buat SSID terpisah untuk 2.4GHz
+
+3. **Dekatkan Router:**
+   - ESP32 butuh sinyal cukup kuat
+   - Coba dekatkan dulu untuk test
+   - Cek signal strength di Serial Monitor:
+   ```cpp
+   Serial.print("RSSI: ");
+   Serial.println(WiFi.RSSI());
+   // -30 to -50 dBm = Excellent
+   // -50 to -60 dBm = Good
+   // -60 to -70 dBm = Fair
+   // -70 to -80 dBm = Weak
+   ```
+
+4. **Test dengan Hotspot HP:**
+   - Buat hotspot dari HP (2.4GHz)
+   - Nama: TestWiFi, Password: 12345678
+   - Jika connect → masalah di router
+   - Jika tidak → masalah di ESP32 atau kode
+
+5. **Reset WiFi Settings:**
+   ```cpp
+   void setup() {
+     WiFi.disconnect(true);  // Reset WiFi
+     WiFi.mode(WIFI_STA);
+     delay(100);
+     WiFi.begin(ssid, pass);
+   }
+   ```
+
+---
+
+### ❓ WiFi connect tapi Blynk offline (Device Offline)
+
+**Penyebab:**
+- Auth Token salah
+- Template ID/Name tidak match
+- Koneksi internet bermasalah
+- Firewall memblok
+
+**Solusi:**
+1. **Cek Auth Token:**
+   - Buka Blynk app → Device → Info → Auth Token
+   - Copy ulang (jangan ketik manual)
+   - Pastikan tidak ada spasi di awal/akhir
+   ```cpp
+   #define BLYNK_AUTH_TOKEN "abcdefgh123456789ijklmnopqrstuv"
+   ```
+
+2. **Cek Template ID:**
+   - Template ID harus sama dengan di Blynk Console
+   - Format: TMPL4xxxxxxxxx
+   ```cpp
+   #define BLYNK_TEMPLATE_ID "TMPL4xRa1bXYZ"  // Sesuaikan!
+   #define BLYNK_TEMPLATE_NAME "LED Control"
+   ```
+
+3. **Test Koneksi Internet:**
+   ```cpp
+   void setup() {
+     // ... WiFi connect ...
+
+     if (WiFi.status() == WL_CONNECTED) {
+       Serial.println("WiFi OK!");
+       Serial.print("IP: ");
+       Serial.println(WiFi.localIP());
+
+       // Test ping google
+       Serial.println("Test ping...");
+       // Jika bisa browsing dari laptop di WiFi yang sama → OK
+     }
+   }
+   ```
+
+4. **Cek Firewall/Network:**
+   - Beberapa jaringan kampus/kantor memblok Blynk
+   - Coba WiFi rumah atau hotspot HP
+   - Blynk server: blynk.cloud (port 80/443)
+
+5. **Recreate Device:**
+   - Di Blynk Console, hapus device lama
+   - Buat device baru dari template
+   - Copy Auth Token yang baru
+   - Upload kode dengan token baru
+
+---
+
+### ❓ Blynk sering disconnect/reconnect
+
+**Penyebab:**
+- Signal WiFi lemah
+- Router restart
+- Tidak ada Blynk.run() di loop
+- Delay() terlalu lama di loop
+
+**Solusi:**
+1. **Pastikan Blynk.run() Ada di Loop:**
+   ```cpp
+   void loop() {
+     Blynk.run();  // WAJIB! Di awal loop()
+
+     // Kode lainnya di bawah
+   }
+   ```
+
+2. **Hindari delay() Lama:**
+   ```cpp
+   // ❌ SALAH:
+   void loop() {
+     Blynk.run();
+     delay(10000);  // 10 detik → Blynk timeout!
+   }
+
+   // ✅ BENAR: Gunakan millis()
+   unsigned long lastTime = 0;
+   void loop() {
+     Blynk.run();
+
+     if (millis() - lastTime >= 10000) {
+       lastTime = millis();
+       // Kode yang dijalankan setiap 10 detik
+     }
+   }
+   ```
+
+3. **Implementasi Auto-Reconnect:**
+   - Gunakan kode dari kode-13-blynk-wifi-reconnect.ino
+   - Check koneksi setiap 10 detik
+   - Reconnect otomatis jika disconnect
+
+4. **Perbaiki Signal WiFi:**
+   - Gunakan antena eksternal ESP32
+   - Tambah WiFi repeater
+   - Pindahkan router lebih dekat
+
+---
+
+### ❓ Widget di app tidak update (data lama terus)
+
+**Penyebab:**
+- Datastream tidak di-link ke widget
+- Virtual pin salah
+- Rate limiting (kirim terlalu cepat)
+- Blynk.virtualWrite() tidak dipanggil
+
+**Solusi:**
+1. **Cek Datastream & Widget:**
+   - Buka Blynk Console → Datastream
+   - Pastikan V0, V1, etc sudah dibuat
+   - Buka Web Dashboard/Mobile App
+   - Edit widget → pastikan linked ke Virtual Pin yang benar
+
+2. **Cek Virtual Pin di Kode:**
+   ```cpp
+   Blynk.virtualWrite(V0, suhu);  // V0 harus match dengan datastream
+   ```
+
+3. **Rate Limiting:**
+   - Blynk free plan: max 10 writes/second
+   - Kirim data maksimal setiap 1-2 detik
+   ```cpp
+   unsigned long lastSend = 0;
+   void loop() {
+     Blynk.run();
+
+     if (millis() - lastSend >= 2000) {  // Setiap 2 detik
+       lastSend = millis();
+       Blynk.virtualWrite(V0, suhu);
+     }
+   }
+   ```
+
+4. **Serial Monitor Debug:**
+   ```cpp
+   if (Blynk.connected()) {
+     Blynk.virtualWrite(V0, suhu);
+     Serial.print("[Blynk] Sent V0: ");
+     Serial.println(suhu);
+   } else {
+     Serial.println("[Blynk] Disconnected!");
+   }
+   ```
+
+---
+
+### ❓ Push notification tidak muncul di HP
+
+**Penyebab:**
+- Event belum dibuat di Blynk Console
+- Enable Notification = OFF
+- Izin notification di HP diblok
+- Event code tidak match
+
+**Solusi:**
+1. **Buat Event di Blynk Console:**
+   - Developer Zone → Events → New Event
+   - Event Code: `high_temp` (harus sama dengan kode)
+   - Name: "High Temperature"
+   - Enable Notification: **ON** ✓
+   - Save
+
+2. **Cek Event Code di Kode:**
+   ```cpp
+   Blynk.logEvent("high_temp", "Suhu: 35°C");
+   //             ^^^^^^^^^^
+   //             Harus sama dengan Event Code!
+   ```
+
+3. **Izin Notification di HP:**
+   - Android: Settings → Apps → Blynk → Notifications → Allow
+   - iOS: Settings → Blynk → Notifications → Allow
+
+4. **Cek Limit Notification:**
+   - Free plan: 1 notification/minute
+   - Max 100 notifications/day
+   - Implementasi cooldown di kode:
+   ```cpp
+   unsigned long lastNotif = 0;
+   if (millis() - lastNotif >= 60000) {  // 60 detik
+     Blynk.logEvent("high_temp", "Alert!");
+     lastNotif = millis();
+   }
+   ```
+
+5. **Test di Serial Monitor:**
+   ```cpp
+   Serial.println("[Blynk] Sending notification...");
+   Blynk.logEvent("high_temp", "Test");
+   Serial.println("[Blynk] Notification sent!");
+   ```
+   - Jika Serial print muncul tapi notifikasi tidak → cek setting di Blynk Console
+
+---
+
 ## 📞 KONTAK BANTUAN
 
 Jika masih mengalami masalah setelah mencoba solusi di atas:
