@@ -239,7 +239,7 @@ void loop() {
   // Baca sensor setiap 2 detik
   if (millis() - lastSensorRead >= sensorInterval) {
     lastSensorRead = millis();
-    bacaSemua Sensor();
+    bacaSemuaSensor();
     kontrolOtomatis();  // Jalankan logika otomatis
   }
 
