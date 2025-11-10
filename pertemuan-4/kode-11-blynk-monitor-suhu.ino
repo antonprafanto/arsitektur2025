@@ -92,6 +92,16 @@
   ===================================================================
 */
 
+// ===== BLYNK CREDENTIALS =====
+// PENTING: Harus di PALING ATAS sebelum #include!
+// GANTI dengan credentials dari Blynk Console Anda!
+#define BLYNK_TEMPLATE_ID "TMPL4xxxxxxxxx"
+#define BLYNK_TEMPLATE_NAME "Room Monitor"
+#define BLYNK_AUTH_TOKEN "abcdefgh123456789ijklmnopqrstuv"
+
+// Print debug ke Serial Monitor
+#define BLYNK_PRINT Serial
+
 // ===== INCLUDE LIBRARY =====
 #include <WiFi.h>
 #include <BlynkSimpleEsp32.h>
@@ -99,15 +109,6 @@
 // Library WiFi untuk koneksi internet
 // Library Blynk untuk komunikasi dengan Blynk cloud
 // Library DHT untuk sensor DHT11
-
-// ===== BLYNK CREDENTIALS =====
-// GANTI dengan credentials dari Blynk app Anda!
-#define BLYNK_TEMPLATE_ID "TMPL4xxxxxxxxx"
-#define BLYNK_TEMPLATE_NAME "Room Monitor"
-#define BLYNK_AUTH_TOKEN "abcdefgh123456789ijklmnopqrstuv"
-
-// Print debug ke Serial Monitor
-#define BLYNK_PRINT Serial
 
 // ===== WIFI CREDENTIALS =====
 char ssid[] = "NAMA_WIFI_ANDA";

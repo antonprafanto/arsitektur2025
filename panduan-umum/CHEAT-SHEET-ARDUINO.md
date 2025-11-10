@@ -321,14 +321,15 @@ void loop() {
 > **Detail lengkap:** Lihat MATERI-PERTEMUAN-4.md Bagian 2B
 
 ```cpp
-#include <WiFi.h>
-#include <BlynkSimpleEsp32.h>
-
 // Credentials (dari Blynk Console - https://blynk.cloud)
+// PENTING: Harus di PALING ATAS sebelum #include!
 #define BLYNK_TEMPLATE_ID "TMPL4xxxxxxxxx"
 #define BLYNK_TEMPLATE_NAME "Project Name"
 #define BLYNK_AUTH_TOKEN "your-auth-token-32-chars"
 #define BLYNK_PRINT Serial  // Debug ke Serial Monitor
+
+#include <WiFi.h>
+#include <BlynkSimpleEsp32.h>
 
 char ssid[] = "WIFI_NAME";
 char pass[] = "WIFI_PASSWORD";

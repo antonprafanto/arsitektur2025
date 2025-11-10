@@ -155,6 +155,13 @@
   ===================================================================
 */
 
+// ===== BLYNK CREDENTIALS =====
+// PENTING: Harus di PALING ATAS sebelum #include!
+#define BLYNK_TEMPLATE_ID "TMPL4xxxxxxxxx"
+#define BLYNK_TEMPLATE_NAME "Smart Home"
+#define BLYNK_AUTH_TOKEN "abcdefgh123456789ijklmnopqrstuv"
+#define BLYNK_PRINT Serial
+
 // ===== INCLUDE LIBRARY =====
 #include <WiFi.h>
 #include <BlynkSimpleEsp32.h>
@@ -162,12 +169,6 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-
-// ===== BLYNK CREDENTIALS =====
-#define BLYNK_TEMPLATE_ID "TMPL4xxxxxxxxx"
-#define BLYNK_TEMPLATE_NAME "Smart Home"
-#define BLYNK_AUTH_TOKEN "abcdefgh123456789ijklmnopqrstuv"
-#define BLYNK_PRINT Serial
 
 // ===== WIFI CREDENTIALS =====
 char ssid[] = "NAMA_WIFI_ANDA";

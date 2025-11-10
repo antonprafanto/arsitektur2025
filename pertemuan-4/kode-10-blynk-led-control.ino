@@ -90,20 +90,21 @@
   ===================================================================
 */
 
-// ===== INCLUDE LIBRARY =====
-#include <WiFi.h>
-#include <BlynkSimpleEsp32.h>
-// Library WiFi untuk koneksi ke internet
-// Library Blynk untuk komunikasi dengan Blynk cloud
-
 // ===== BLYNK CREDENTIALS =====
-// GANTI dengan credentials dari Blynk app Anda!
+// PENTING: Harus di PALING ATAS sebelum #include!
+// GANTI dengan credentials dari Blynk Console Anda!
 #define BLYNK_TEMPLATE_ID "TMPL4xxxxxxxxx"
 #define BLYNK_TEMPLATE_NAME "LED Control"
 #define BLYNK_AUTH_TOKEN "abcdefgh123456789ijklmnopqrstuv"
 
 // Print debug ke Serial Monitor (opsional, bisa di-comment jika tidak perlu)
 #define BLYNK_PRINT Serial
+
+// ===== INCLUDE LIBRARY =====
+#include <WiFi.h>
+#include <BlynkSimpleEsp32.h>
+// Library WiFi untuk koneksi ke internet
+// Library Blynk untuk komunikasi dengan Blynk cloud
 
 // ===== WIFI CREDENTIALS =====
 // GANTI dengan nama dan password WiFi Anda!

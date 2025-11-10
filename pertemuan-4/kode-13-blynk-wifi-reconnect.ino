@@ -86,15 +86,16 @@
   ===================================================================
 */
 
-// ===== INCLUDE LIBRARY =====
-#include <WiFi.h>
-#include <BlynkSimpleEsp32.h>
-
 // ===== BLYNK CREDENTIALS =====
+// PENTING: Harus di PALING ATAS sebelum #include!
 #define BLYNK_TEMPLATE_ID "TMPL4xxxxxxxxx"
 #define BLYNK_TEMPLATE_NAME "Reconnect Demo"
 #define BLYNK_AUTH_TOKEN "abcdefgh123456789ijklmnopqrstuv"
 #define BLYNK_PRINT Serial
+
+// ===== INCLUDE LIBRARY =====
+#include <WiFi.h>
+#include <BlynkSimpleEsp32.h>
 
 // ===== WIFI CREDENTIALS =====
 char ssid[] = "NAMA_WIFI_ANDA";
