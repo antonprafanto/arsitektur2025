@@ -128,15 +128,15 @@ arsi2025/
 
 ---
 
-### **Pertemuan 4: IoT Cloud Platform & Proyek Maket** (3 SKS)
+### **Pertemuan 4: IoT Cloud Platform & Konsep Proyek Akhir** (3 SKS)
 **Topik:**
 - Platform IoT Cloud (Blynk)
 - Remote monitoring via smartphone
 - Push notification dan alert system
-- Panduan pembuatan maket
+- Panduan video demonstrasi & poster konsep
 - Konsultasi proyek kelompok
 
-**Output:** Mahasiswa bisa kontrol dan monitor sistem via smartphone + maket rumah pintar
+**Output:** Mahasiswa bisa kontrol sistem via smartphone + membuat video demonstrasi & poster konsep bangunan cerdas
 
 ---
 

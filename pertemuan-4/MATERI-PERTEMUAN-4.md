@@ -1,19 +1,19 @@
-# PERTEMUAN 4: INTEGRASI SISTEM & PROYEK MAKET
+# PERTEMUAN 4: PLATFORM IoT CLOUD & KONSEP PROYEK AKHIR
 
 **Mata Kuliah**: Bangunan Cerdas
 **Durasi**: 3 SKS (150 menit)
-**Sifat**: Workshop & Konsultasi Proyek
+**Sifat**: Workshop Blynk IoT & Konsultasi Proyek
 
 ---
 
 ## 📋 TUJUAN PEMBELAJARAN
 
 Setelah pertemuan ini, mahasiswa diharapkan dapat:
-1. Mengintegrasikan minimal 3 sensor dan 3 output dalam satu sistem
-2. Mengatasi masalah troubleshooting yang umum terjadi
-3. Merancang dan merakit maket rumah pintar
-4. Mempresentasikan konsep dan demo sistem
-5. Mendokumentasikan proyek dengan baik
+1. Menggunakan platform Blynk IoT untuk monitoring & kontrol via smartphone
+2. Mengintegrasikan minimal 3 sensor dan 3 output dengan Blynk
+3. Membuat video demonstrasi sistem IoT (3-5 menit)
+4. Membuat poster konsep bangunan cerdas (A3 landscape)
+5. Mempresentasikan konsep dan demo sistem IoT di breadboard
 
 ---
 
@@ -133,7 +133,7 @@ Sampai pertemuan 3, sistem smart building kita sudah bisa:
 - ✅ Otomatis berdasarkan threshold
 
 **Tapi... ada masalahnya:**
-- ❌ Harus selalu di depan maket untuk lihat data
+- ❌ Harus selalu di depan breadboard untuk lihat data (via Serial Monitor)
 - ❌ Tidak bisa kontrol dari jarak jauh
 - ❌ Tidak ada log/history data
 - ❌ Sulit monitoring real-time
