@@ -71,7 +71,7 @@
      - Klik device yang baru dibuat
      - Tab "Device Info"
      - Klik icon copy (⎘) di samping BLYNK_AUTH_TOKEN
-     - Paste ke line 80 di bawah!
+     - Paste ke line 96 di bawah (ganti "TMPL4xxxxxxxxx")!
 
   💡 TIP: Auth Token lebih mudah di-copy via web console!
   📖 Panduan lengkap: Lihat MATERI-PERTEMUAN-4.md Bagian 2B
