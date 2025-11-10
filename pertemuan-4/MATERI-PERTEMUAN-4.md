@@ -1436,6 +1436,725 @@ Selamat! Anda telah menyelesaikan pembelajaran tentang:
 
 ---
 
+## 🎬 BAGIAN 5: PANDUAN VIDEO & POSTER PROYEK
+
+### A. Konsep Baru: Sistem IoT Terpisah dari Maket
+
+**PERUBAHAN PENTING!** 🔴
+
+Berdasarkan evaluasi, kami mengubah konsep proyek akhir agar lebih **sustainable** dan **fokus pada konsep bangunan cerdas**:
+
+#### ✅ **YANG WAJIB:**
+1. **Sistem IoT lengkap di breadboard/modul terpisah**
+   - Semua sensor + ESP32 + output di breadboard
+   - Sistem harus berjalan sempurna dan bisa di-demo
+   - Kabel rapi, komponen terorganisir
+
+2. **Video demonstrasi 3-5 menit**
+   - Penjelasan konsep bangunan
+   - Demo sistem IoT bekerja
+   - Upload ke YouTube (Unlisted)
+
+3. **Poster konsep A3 (digital/print)**
+   - Denah bangunan dengan zona IoT
+   - Diagram sistem
+   - Flowchart logika
+   - Foto komponen
+
+4. **Denah/isometri bangunan (digital)**
+   - Bisa pakai SketchUp, AutoCAD, atau hand-drawing scan
+   - Tunjukkan zona-zona smart building
+   - Tandai lokasi sensor & output
+
+5. **Kode program lengkap**
+   - File .ino dengan komentar 60%+
+   - Terintegrasi dengan Blynk
+
+#### ❌ **YANG TIDAK WAJIB:**
+- Maket fisik detail dengan komponen tertanam
+- Craft rumah-rumahan dari kardus/styrofoam
+- Furniture miniatur
+- Komponen dipasang permanen di maket
+
+#### ✅ **OPSIONAL (Nilai tambah):**
+- Maket miniatur sederhana (hanya visual, tanpa komponen)
+- Render 3D bangunan
+- Prototype casing untuk breadboard
+
+---
+
+### B. Mengapa Konsep Ini Lebih Baik?
+
+#### 1. **Sustainability & Reusability** ♻️
+- Komponen bisa dipakai adik tingkat tahun depan
+- Tidak rusak/hilang tertanam di maket
+- Hemat budget jangka panjang
+- **Ramah lingkungan!**
+
+#### 2. **Fokus pada Konsep, Bukan Craft** 🧠
+- Mahasiswa Arsitektur fokus ke **desain & konsep** bangunan cerdas
+- Tidak buang waktu untuk craft detail maket
+- Lebih sesuai kompetensi Arsitektur (konsep > craft)
+- **Video & poster = skill presentasi profesional**
+
+#### 3. **Fleksibilitas Demonstrasi** 🎥
+- Demo breadboard lebih mudah troubleshooting
+- Sistem terlihat jelas saat presentasi
+- Dosen bisa test fungsionalitas langsung
+- **Video bisa menunjukkan sistem bekerja dengan jelas**
+
+#### 4. **Profesionalisme** 💼
+- Video = skill komunikasi visual (penting untuk arsitek)
+- Poster = skill presentasi desain (core skill arsitektur)
+- Mirip presentasi proyek arsitektur ke klien
+- **Portfolio-worthy!**
+
+#### 5. **Efisiensi Waktu** ⏱️
+- Lebih banyak waktu untuk konsep matang
+- Fokus ke programming & integrasi IoT
+- **Quality over quantity!**
+
+---
+
+### C. Panduan Membuat Video Demonstrasi
+
+#### Struktur Video (3-5 menit):
+
+**[00:00-00:30] INTRO**
+- Perkenalan kelompok
+- Judul proyek
+- Overview singkat
+
+**Contoh Script:**
+> "Halo, kami kelompok 5 dari Prodi Arsitektur. Kami akan presentasikan Smart Office System yang menghemat energi hingga 30% dengan teknologi IoT."
+
+---
+
+**[00:30-01:30] KONSEP BANGUNAN**
+- Tampilkan denah/poster
+- Jelaskan zona-zona bangunan
+- Mengapa perlu IoT?
+- Benefit/manfaat
+
+**Contoh Script:**
+> "Office ini punya 3 zona: Open Space untuk 10 orang, Meeting Room, dan Pantry. Sistem IoT kami gunakan untuk kontrol otomatis AC dan lampu berdasarkan kehadiran dan kondisi ruangan. Ini bisa hemat energi 30-40% dibanding office konvensional."
+
+**Tips:**
+- Show denah dengan pointer/arrow
+- Zoom in ke zona penting
+- Gunakan visual yang jelas
+
+---
+
+**[01:30-02:30] SISTEM IoT**
+- Tampilkan breadboard + komponen
+- Jelaskan sensor satu per satu
+- Jelaskan output/aktuator
+- Tunjuk ESP32 dan koneksi WiFi
+
+**Contoh Script:**
+> "Ini adalah breadboard sistem IoT kami. Ada DHT11 untuk baca suhu, LDR untuk deteksi cahaya, PIR untuk deteksi gerakan. Output-nya ada relay untuk kontrol AC dan lampu, plus OLED display untuk status lokal. Semua dikontrol ESP32 yang terkoneksi WiFi dan Blynk."
+
+**Tips:**
+- Close-up shot breadboard
+- Tunjuk komponen saat disebutkan
+- Label komponen (text overlay di editing)
+
+---
+
+**[02:30-04:30] DEMO LIVE**
+- Demo 1: Sensor DHT11 baca suhu → Relay AC kerja
+- Demo 2: LDR deteksi gelap → Lampu nyala
+- Demo 3: PIR detect gerakan → Sistem aktif
+- Demo 4: Buka Blynk app → Monitoring real-time
+- Demo 5: Kontrol manual via app
+
+**Contoh Script:**
+> "Sekarang saya akan demo sistemnya. Perhatikan, saat saya tutup LDR dengan tangan, nilai cahaya turun... dan lampu otomatis nyala. Kemudian saat saya buka HP, di Blynk app terlihat data real-time dari semua sensor. Saya juga bisa kontrol manual AC dari smartphone."
+
+**Tips:**
+- **PENTING:** Slow motion untuk momen kunci (relay click, LED nyala)
+- Split screen: breadboard + HP Blynk app
+- Tunjukkan serial monitor (opsional, untuk tech-savvy)
+
+---
+
+**[04:30-05:00] OUTRO**
+- Kesimpulan manfaat sistem
+- Efisiensi energi (estimasi %)
+- Terima kasih + nama kelompok
+
+**Contoh Script:**
+> "Kesimpulannya, sistem Smart Office kami bisa hemat energi 35% dengan kontrol otomatis. User juga bisa monitor dan kontrol dari smartphone. Terima kasih! Kami kelompok 5: Anton, Budi, Citra."
+
+---
+
+#### Checklist Video:
+
+**Teknis:**
+- [ ] Durasi 3-5 menit (tidak terlalu panjang/pendek)
+- [ ] Resolusi minimal 720p (HD)
+- [ ] Audio jelas (mic HP atau external)
+- [ ] Pencahayaan bagus (terang, tidak gelap/backlight)
+- [ ] Kamera stabil (gunakan tripod atau letakkan HP di tempat fix)
+
+**Konten:**
+- [ ] Shot breadboard close-up (komponen terlihat)
+- [ ] Demo sistem bekerja (real, bukan simulasi)
+- [ ] Blynk app terlihat jelas di HP
+- [ ] Semua anggota kelompok muncul/voice (pembagian adil)
+- [ ] Ada subtitle (opsional, tapi nilai tambah)
+
+**Editing:**
+- [ ] Cut yang tidak perlu (jangan ada "uhm...", "eee...")
+- [ ] Transition smooth antar scene
+- [ ] Text overlay untuk label komponen
+- [ ] Background music (volume kecil, jangan ganggu voice)
+- [ ] Intro slide (judul + nama kelompok)
+- [ ] Outro slide (terima kasih)
+
+**Upload:**
+- [ ] Upload ke YouTube (setting: **Unlisted**)
+- [ ] Judul: "[Kelas] Smart Office IoT - Kelompok 5"
+- [ ] Deskripsi: Anggota kelompok + ringkasan konsep
+- [ ] Thumbnail menarik (screenshot breadboard atau denah)
+
+---
+
+#### Tools Video (Gratis):
+
+**Recording:**
+- Kamera HP (minimal 720p, most HP sekarang 1080p)
+- Webcam laptop (jika ada yang bagus)
+
+**Editing:**
+- **CapCut** (mobile & PC, paling mudah untuk pemula)
+- **Filmora Free** (PC, banyak fitur)
+- **DaVinci Resolve** (PC, professional tapi gratis)
+- **OpenShot** (PC, open-source)
+- **iMovie** (Mac, bawaan)
+
+**Screen Recording (untuk Blynk app demo):**
+- Android: Bawaan (Screen Recorder di quick settings)
+- iPhone: Bawaan (Control Center → Screen Recording)
+
+**Tips Recording:**
+1. Rekam di siang hari (natural light terbaik)
+2. Background polos/rapi (tidak berantakan)
+3. Script dulu, practice sebelum rekam final
+4. Rekam beberapa take, pilih yang terbaik
+5. Jangan pakai zoom digital (mendekatlah secara fisik)
+
+---
+
+### D. Panduan Membuat Poster Konsep
+
+#### Format Poster:
+
+**Ukuran:** A3 Landscape (297mm × 420mm)
+**Orientasi:** Horizontal/Landscape
+**Format File:** PDF (print) atau JPG/PNG (digital)
+**Resolution:** Minimal 300 DPI (untuk print)
+
+---
+
+#### Layout Poster (Template):
+
+```
+┌───────────────────────────────────────────────────────────────┐
+│  [LOGO UNIV]   SMART OFFICE IoT SYSTEM    [NAMA KELOMPOK]     │
+├────────────────────┬────────────────────┬─────────────────────┤
+│                    │                    │                     │
+│  DENAH BANGUNAN    │  DIAGRAM SISTEM    │  FLOWCHART LOGIKA   │
+│  (Zona IoT)        │  (Sensor→ESP32→    │  (If-Then Rules)    │
+│                    │   Output)          │                     │
+│                    │                    │                     │
+├────────────────────┴────────────────────┴─────────────────────┤
+│                                                                │
+│         FOTO BREADBOARD + KOMPONEN (dengan label)              │
+│                                                                │
+├────────────────────────────────────────────────────────────────┤
+│  MANFAAT:                 │  EFISIENSI ENERGI:                │
+│  • Hemat energi 30-40%    │  • AC auto OFF saat ruangan kosong│
+│  • Kontrol via smartphone │  • Lampu menyala sesuai cahaya    │
+│  • Monitoring real-time   │  • Estimasi hemat Rp 500rb/bulan  │
+└───────────────────────────┴───────────────────────────────────┘
+```
+
+---
+
+#### Konten Wajib di Poster:
+
+**1. Header (Top):**
+- Logo Universitas + Prodi
+- **Judul Proyek** (font besar, bold, eye-catching)
+- Nama anggota kelompok (font kecil, tapi terbaca)
+
+**Contoh:**
+```
+UNIVERSITAS MULAWARMAN
+SMART OFFICE IoT AUTOMATION SYSTEM
+Kelompok 5: Anton • Budi • Citra • Dewi
+```
+
+---
+
+**2. Denah/Isometri Bangunan:**
+- Gambar denah dengan zona IoT
+- Tandai lokasi sensor (icon sensor + label)
+- Tandai lokasi output (icon lampu/AC)
+- Legend/keterangan warna
+
+**Tips:**
+- Gunakan warna berbeda untuk zona berbeda
+- Icon sensor harus jelas (bukan terlalu kecil)
+- Arrow menunjuk lokasi exact
+
+**Contoh annotation:**
+```
+[DHT11] → Zona Open Space (ceiling)
+[PIR] → Entrance door
+[Relay AC] → AC unit
+```
+
+---
+
+**3. Diagram Sistem:**
+- Flowchart: Sensor → ESP32 → Output
+- Koneksi WiFi ke Blynk (cloud icon)
+- Virtual pin mapping (V0, V1, V2, ...)
+
+**Contoh diagram:**
+```
+┌──────────┐
+│ DHT11    │──► V0 (Suhu)
+│ LDR      │──► V1 (Cahaya)    ┌──────────┐
+│ PIR      │──► V2 (Gerakan)──►│  ESP32   │
+└──────────┘                   └────┬─────┘
+                                    │ WiFi
+                            ┌───────▼──────┐
+                            │    Blynk     │
+                            │  Dashboard   │
+                            └──────────────┘
+```
+
+---
+
+**4. Flowchart Logika (If-Then):**
+- Aturan otomatis dalam bentuk diagram
+- Mudah dipahami non-teknis
+- Gunakan warna untuk decision (kuning) dan action (hijau)
+
+**Contoh:**
+```
+[Baca Sensor] → [Suhu > 28°C?] ─YES→ [AC ON]
+                       │
+                       NO
+                       ▼
+              [Cahaya < 500?] ─YES→ [Lampu ON]
+```
+
+---
+
+**5. Foto Komponen (Breadboard):**
+- Foto breadboard dengan semua komponen
+- **WAJIB:** Annotate setiap komponen (arrow + label)
+- Background polos (white atau abu-abu)
+- Lighting bagus (tidak ada bayangan)
+
+**Tips foto:**
+- Ambil dari atas (bird eye view)
+- Fokus tajam, tidak blur
+- Gunakan editing tool untuk tambah arrow & text
+  - Canva: Elemen → Shapes → Arrow
+  - PowerPoint: Insert → Shapes → Arrow
+
+**Contoh annotation:**
+```
+[Arrow ke DHT11] → "DHT11: Sensor Suhu & Kelembapan"
+[Arrow ke ESP32] → "ESP32: Microcontroller"
+[Arrow ke Relay] → "Relay 2CH: Kontrol AC & Lampu"
+```
+
+---
+
+**6. Manfaat & Efisiensi:**
+- Bullet points singkat, jelas
+- Fokus pada benefit untuk user
+- Include angka (30%, Rp 500rb, etc.)
+
+**Contoh:**
+```
+MANFAAT:
+✓ Hemat energi 30-40% (estimasi)
+✓ Kontrol dari smartphone (remote)
+✓ Monitoring real-time 24/7
+✓ Notifikasi otomatis (push notification)
+
+EFISIENSI ENERGI:
+✓ AC auto OFF saat tidak ada orang
+✓ Lampu menyesuaikan cahaya alami
+✓ Estimasi penghematan: Rp 500.000/bulan
+✓ ROI (Return on Investment): 8 bulan
+```
+
+---
+
+**7. QR Code (Opsional - Nilai Tambah):**
+- QR code link ke video YouTube
+- QR code link ke Blynk web dashboard (jika ada)
+- Letakkan di corner bawah kanan
+
+**Cara buat QR code (gratis):**
+- Website: https://www.qr-code-generator.com/
+- Masukkan URL video YouTube
+- Download PNG
+
+---
+
+#### Checklist Poster:
+
+**Konten:**
+- [ ] Judul jelas dan menarik
+- [ ] Denah bangunan dengan zona IoT
+- [ ] Diagram sistem lengkap (sensor-ESP32-output-Blynk)
+- [ ] Flowchart logika if-then
+- [ ] Foto breadboard dengan label/annotation
+- [ ] Manfaat & efisiensi energi
+- [ ] QR code ke video (opsional)
+
+**Desain:**
+- [ ] Layout clean & tidak sesak (beri white space)
+- [ ] Hierarchy jelas (info penting lebih besar)
+- [ ] Warna konsisten (max 3 warna utama)
+- [ ] Font max 2 jenis (heading + body)
+- [ ] Font terbaca (minimal 12pt untuk body text)
+- [ ] Alignment rapi (tidak miring-miring)
+
+**Teknis:**
+- [ ] Format: PDF atau JPG (high res)
+- [ ] Resolution: 300 DPI (jika print)
+- [ ] Ukuran: A3 Landscape (297×420mm)
+- [ ] File size: < 10 MB (untuk upload/email)
+
+---
+
+#### Tools Poster (Gratis):
+
+**1. Canva (RECOMMENDED - Paling Mudah!)**
+- Website: https://www.canva.com
+- Template poster gratis banyak
+- Drag & drop, tidak perlu skill design
+- Bisa collaborative (kelompok edit bareng)
+- Export PDF high quality (300 DPI)
+
+**Cara pakai:**
+1. Sign up gratis
+2. Search "Poster" → Filter by "Free"
+3. Pilih template landscape
+4. Ganti teks, gambar, warna sesuai konsep Anda
+5. Download → PDF Print (high quality)
+
+---
+
+**2. PowerPoint/Google Slides**
+- Bawaan Windows/Google
+- Familiar untuk mahasiswa
+- Bisa custom size ke A3
+
+**Cara setup A3:**
+1. Design → Slide Size → Custom
+2. Width: 42 cm, Height: 29.7 cm (A3 Landscape)
+3. Design poster di 1 slide
+4. File → Save As → PDF
+
+---
+
+**3. Adobe Illustrator (Advanced)**
+- Jika ada yang mahir design
+- Professional tools
+- Vector-based (scalable)
+
+---
+
+**4. Figma (Design Kolaboratif)**
+- Website: https://www.figma.com
+- Gratis untuk tim kecil
+- Real-time collaboration
+- Export PDF/PNG
+
+---
+
+#### Tips Desain Poster:
+
+**1. Less is More**
+- Jangan penuh sesak informasi
+- Beri white space (ruang kosong)
+- 60% konten, 40% white space
+
+**2. Visual Hierarchy**
+- Judul paling besar (48-60pt)
+- Subheading menengah (24-36pt)
+- Body text kecil (12-18pt)
+- **Info penting = ukuran besar**
+
+**3. Warna Konsisten**
+- Gunakan max 3 warna utama
+- Contoh: Biru (primary), Orange (accent), Abu-abu (text)
+- Gunakan color palette generator: https://coolors.co
+
+**4. Font Pairing**
+- Max 2 jenis font:
+  - **Heading:** Sans-serif tebal (Montserrat, Poppins)
+  - **Body:** Sans-serif ringan atau Serif (Open Sans, Roboto)
+- Hindari Comic Sans, Papyrus (tidak professional)
+
+**5. Alignment Rapi**
+- Gunakan grid/guideline
+- Semua elemen rata (kiri, tengah, atau kanan)
+- Jarak antar elemen konsisten
+
+**6. Contrast**
+- Text harus kontras dengan background
+- Dark text on light background (atau sebaliknya)
+- Hindari: kuning on white, abu on hitam
+
+**7. Icon & Gambar**
+- Gunakan icon gratis: Flaticon, Icons8
+- Gambar high resolution (tidak pixelated)
+- Consistent style (semua icon 1 style)
+
+---
+
+#### Contoh Workflow Pembuatan Poster:
+
+**Minggu 1:**
+- [ ] Kumpulkan semua material (denah, foto breadboard, flowchart)
+- [ ] Pilih template Canva atau buat layout di PowerPoint
+- [ ] Draft kasar layout
+
+**Minggu 2:**
+- [ ] Design poster lengkap
+- [ ] Review dengan kelompok (apakah mudah dipahami?)
+- [ ] Revisi berdasarkan feedback
+
+**Minggu 3:**
+- [ ] Finalisasi design
+- [ ] Export PDF (300 DPI)
+- [ ] Test print A4 dulu (untuk cek warna & keterbacaan)
+- [ ] Print final A3 atau siapkan PDF untuk proyektor
+
+---
+
+### E. Kriteria Penilaian (Updated)
+
+#### 1. KONSEP BANGUNAN (25%)
+- Originalitas ide (5%)
+- Relevansi dengan smart building (10%)
+- Penjelasan zona & fungsi jelas (5%)
+- Manfaat & efisiensi dijelaskan (5%)
+
+#### 2. SISTEM IoT (30%)
+- Fungsionalitas sistem (semua sensor & output jalan) (15%)
+- Kode program (logika otomatis benar, komentar 60%+) (10%)
+- Integrasi Blynk (monitoring smartphone) (5%)
+
+#### 3. VIDEO DEMONSTRASI (25%)
+- Clarity penjelasan konsep bangunan (10%)
+- Kualitas video (audio jelas, visual terang, editing rapi) (5%)
+- Demo sistem live (bekerja real, bukan simulasi) (10%)
+
+#### 4. POSTER KONSEP (20%)
+- Desain visual menarik & profesional (10%)
+- Kelengkapan informasi (denah, diagram, foto, flowchart) (5%)
+- Kemudahan dipahami oleh non-teknis (5%)
+
+#### BONUS (Maksimal +10%)
+- Fitur tambahan (Chart, advanced automation, multi-zone) (+5%)
+- Kreativitas desain poster exceptional (+3%)
+- Video editing sangat baik (slow-mo, split screen, subtitle) (+2%)
+
+**Total: 100% (+ 10% bonus)**
+
+---
+
+### F. FAQ Konsep Baru
+
+**Q: Apakah harus buat maket rumah/bangunan fisik?**
+**A:** TIDAK WAJIB. Fokus ke sistem IoT di breadboard + video + poster. Maket fisik hanya opsional (nilai tambah kecil, max +2%).
+
+**Q: Kalau tidak ada maket, bagaimana tunjukkan konsep bangunan?**
+**A:** Gunakan denah digital (SketchUp, AutoCAD, atau hand-drawing scan) + poster + video penjelasan. Ini lebih profesional dan sesuai skill Arsitektur.
+
+**Q: Komponen breadboard tidak rusak kalau sering dibongkar-pasang?**
+**A:** Tidak, asalkan hati-hati. Justru ini bagus untuk adik tingkat bisa pakai lagi. Ajari mereka bongkar-pasang dengan benar.
+
+**Q: Video harus diupload ke YouTube? Boleh Google Drive?**
+**A:** YouTube Unlisted recommended (lebih professional, mudah embed di laporan). Tapi boleh Google Drive jika prefer. Pastikan link public/anyone with link can view.
+
+**Q: Poster harus print atau boleh digital?**
+**A:** Boleh digital (PDF ditampilkan di proyektor saat presentasi). Print A3 lebih bagus untuk dipajang tapi tidak wajib.
+
+**Q: Berapa minimal sensor & output?**
+**A:** Minimal 2 sensor + 2 output. Recommended: 3 sensor + 3 output untuk konsep lebih kaya dan comprehensive.
+
+**Q: Apakah semua anggota kelompok harus muncul di video?**
+**A:** Minimal suara/voice semua anggota (tidak harus face reveal). Tapi face reveal lebih professional dan menunjukkan teamwork.
+
+**Q: Kalau sistem error saat demo live presentasi gimana?**
+**A:** Makanya ada video backup! Jika live demo error, tunjukkan video. Tapi usahakan live demo sukses (test berkali-kali sebelumnya).
+
+---
+
+### G. Timeline Pengerjaan (4 Minggu)
+
+**Minggu 1: Konsep & Perencanaan**
+- Diskusi kelompok: tentukan tema (Smart Office, Home, etc.)
+- Buat denah bangunan dengan zona IoT
+- Tentukan sensor & output yang digunakan
+- Buat flowchart logika sistem (if-then rules)
+- **Deliverable:** Denah + flowchart draft
+
+**Minggu 2: Implementasi Sistem IoT**
+- Test sensor satu per satu (individual testing)
+- Test output/aktuator satu per satu
+- Gabungkan sensor + output (integration testing)
+- Setup Blynk app (Template, Datastream, Widget)
+- Test komunikasi ESP32 ↔ Blynk
+- **Deliverable:** Sistem IoT di breadboard jalan 80%
+
+**Minggu 3: Finalisasi & Dokumentasi**
+- Finalisasi kode program (tambah komentar 60%+)
+- Rekam video demonstrasi (3-5 menit, multiple takes)
+- Buat poster konsep (Canva/PowerPoint, A3)
+- Edit video (CapCut: cut, transition, text overlay)
+- Upload video ke YouTube (Unlisted)
+- **Deliverable:** Video + Poster + Kode final
+
+**Minggu 4: Presentasi & Demo**
+- Print poster A3 (atau siapkan PDF high-res)
+- Bawa breadboard + ESP32 untuk demo live
+- Siapkan HP dengan Blynk app installed & tested
+- Latihan presentasi kelompok (timing 10 menit)
+- **Presentasi di kelas** (7 menit presentasi + 3 menit Q&A)
+- Demo live sistem bekerja (backup: video jika gagal)
+
+---
+
+### H. Deliverables Checklist
+
+**File Digital (dikumpulkan via LMS/Email):**
+- [ ] Video demonstrasi (link YouTube Unlisted)
+- [ ] Poster konsep (PDF, 300 DPI, <10 MB)
+- [ ] Kode program (.ino file, komentar 60%+)
+- [ ] Denah bangunan (JPG/PNG/PDF)
+- [ ] Laporan singkat (opsional, 1-2 halaman)
+
+**Demo Live (bawa saat presentasi):**
+- [ ] Breadboard + ESP32 (sistem lengkap, tested)
+- [ ] HP dengan Blynk app (login, dashboard siap)
+- [ ] Poster (print A3 atau laptop untuk proyektor)
+- [ ] Kabel charging ESP32 + power bank/adaptor
+
+**Presentasi:**
+- [ ] Slide PPT (max 6 slides)
+- [ ] Durasi 10 menit (7 presentasi + 3 Q&A)
+- [ ] Semua anggota presentasi (bagi rata)
+
+---
+
+### I. Contoh Konsep Proyek
+
+**1. Smart Home (Rumah Tinggal 2 Lantai)**
+- **Zona:** Living Room, Bedroom, Kitchen, Bathroom
+- **Sensor:** DHT11 (setiap ruangan), PIR (entrance), LDR (outdoor)
+- **Output:** Relay AC (bedroom), Relay lampu (all rooms), OLED (living room)
+- **Logika:** AC nyala jika suhu >28°C DAN ada orang di bedroom. Lampu nyala jika gelap DAN PIR detect motion.
+- **Estimasi hemat:** 30% energi (AC auto off saat kosong)
+
+**2. Smart Office (10 Workstations)**
+- **Zona:** Open Space, Meeting Room, Pantry
+- **Sensor:** DHT11 (open space + meeting room), PIR (entrance), LDR (ceiling)
+- **Output:** Relay AC (2 unit), Relay lampu (3 zone), Buzzer (alarm suhu)
+- **Logika:** AC/lampu auto berdasarkan occupancy. Buzzer bunyi jika suhu >32°C (warning overheat).
+- **Estimasi hemat:** 35-40% energi
+
+**3. Smart Hotel Room**
+- **Zona:** Bedroom, Bathroom, Balcony
+- **Sensor:** DHT11, PIR (door), LDR (window)
+- **Output:** Relay AC, Relay lampu, OLED display (welcome message)
+- **Logika:** Saat tamu masuk (PIR), OLED tampilkan "Welcome!". AC auto sesuai suhu preference. Lampu auto saat malam.
+- **Estimasi hemat:** 25% energi (guest tidak perlu manual control)
+
+**4. Smart Classroom**
+- **Zona:** Ruang kelas (40 seats), Area Dosen
+- **Sensor:** DHT11, PIR (pintu depan), LDR (jendela)
+- **Output:** Relay AC (2 unit), Relay lampu (4 zone), Buzzer (bell otomatis)
+- **Logika:** AC/lampu nyala saat PIR detect (kelas ada orang). Buzzer auto jam 07:00, 08:40, dst (schedule kuliah).
+- **Estimasi hemat:** 40% energi (sering lupa matikan AC)
+
+**5. Smart Greenhouse**
+- **Zona:** Growing area, Irrigation system
+- **Sensor:** DHT11 (suhu/humidity), LDR (sunlight), Soil moisture (opsional)
+- **Output:** Relay fan (ventilation), Relay water pump (irrigation), Relay grow light
+- **Logika:** Fan nyala jika suhu >35°C atau humidity >80%. Pump nyala jika soil dry (<30%). Grow light nyala jika kurang cahaya.
+- **Estimasi:** Optimal growing condition 24/7
+
+---
+
+### J. Tips Sukses Proyek
+
+#### Untuk Sistem IoT:
+1. **Mulai sederhana:** Test 1 sensor → 2 sensor → 3 sensor (incremental)
+2. **Dokumentasi progress:** Foto/video setiap tahap (berguna untuk laporan)
+3. **Backup plan:** Siapkan kode alternatif jika sensor rusak (bisa pakai nilai simulasi)
+4. **Test Blynk offline:** Pastikan sistem tetap jalan tanpa Blynk (failsafe mode)
+5. **Cable management:** Rapi breadboard pakai zip-tie/tape (terlihat professional)
+
+#### Untuk Video:
+1. **Script dulu:** Tulis word-by-word apa yang akan diucapkan (latihan baca)
+2. **Practice makes perfect:** Latihan 3-5x sebelum rekam final
+3. **Lighting is key:** Rekam siang hari natural light atau gunakan ring light
+4. **Stable camera:** Tripod HP (~Rp 50rb) atau letakkan HP di stack buku
+5. **Voice over:** Jika video blur/gelap, bisa voice-over pakai recording terpisah
+
+#### Untuk Poster:
+1. **Less is more:** Jangan penuh sesak, beri white space 30-40%
+2. **Get feedback:** Tunjukkan ke teman non-teknis, apakah mereka paham?
+3. **Print test:** Print A4 dulu sebelum final A3 (cek warna & readability)
+4. **High contrast:** Text harus sangat jelas terbaca dari jarak 2 meter
+5. **Save multiple versions:** Simpan draft v1, v2, v3 (jaga-jaga perlu rollback)
+
+---
+
+### K. Kesimpulan Konsep Baru
+
+✅ **Konsep baru ini LEBIH BAIK karena:**
+1. **Sustainable** - Komponen reusable untuk adik tingkat
+2. **Fokus Konsep** - Mahasiswa Arsitektur fokus ke desain, bukan craft
+3. **Professional** - Video & poster = skill presentasi modern
+4. **Praktis** - Demo lebih mudah, troubleshooting cepat
+5. **Cost-Effective** - Hemat budget jangka panjang
+
+✅ **Yang dipelajari mahasiswa:**
+- Konsep smart building (zone planning, energy efficiency)
+- IoT system design (sensor-controller-output)
+- Programming & integration
+- Video production (storyboard, recording, editing)
+- Poster design (layout, visual communication)
+- **Presentation skills** (public speaking, demo live)
+
+✅ **Outcome:**
+- **Portfolio-worthy project** (bisa ditunjukkan ke calon employer)
+- **Real IoT skills** (applicable di industri smart building)
+- **Communication skills** (video & poster = modern presentation)
+
+---
+
+**Selamat mengerjakan proyek dengan konsep baru! Fokus pada konsep, bukan craft. Quality over quantity! 🚀**
+
+---
+
 ## 🎤 JADWAL PRESENTASI PROYEK
 
 **Format Presentasi:**
