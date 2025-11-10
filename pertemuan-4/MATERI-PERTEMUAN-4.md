@@ -1,7 +1,7 @@
 # PERTEMUAN 4: PLATFORM IoT CLOUD & KONSEP PROYEK AKHIR
 
 **Mata Kuliah**: Bangunan Cerdas
-**Durasi**: 3 SKS (150 menit)
+**Durasi**: 3-4 SKS (150-210 menit, fleksibel sesuai kebutuhan)
 **Sifat**: Workshop Blynk IoT & Konsultasi Proyek
 
 ---
@@ -122,7 +122,7 @@ Setelah pertemuan ini, mahasiswa diharapkan dapat:
 
 ---
 
-## 📱 BAGIAN 2A: PLATFORM IoT BLYNK (50 menit)
+## 📱 BAGIAN 2B: PLATFORM IoT BLYNK (50 menit)
 
 ### Pengenalan: Kenapa Perlu Blynk?
 
