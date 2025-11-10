@@ -857,7 +857,7 @@ Jika WiFi kampus/rumah bermasalah:
 
 ---
 
-### L. Integrasi Blynk ke Proyek Maket
+### L. Integrasi Blynk ke Proyek Akhir
 
 **Rekomendasi Penggunaan Blynk di Proyek:**
 
@@ -869,7 +869,7 @@ Jika WiFi kampus/rumah bermasalah:
 2. **Remote Control:**
    - Kontrol relay AC, lampu, pompa
    - Gunakan Button/Switch widget
-   - Bisa kontrol dari rumah saat maket di kampus!
+   - Bisa kontrol dari rumah saat sistem breadboard di kampus!
 
 3. **Notifikasi:**
    - Alert saat suhu >30°C
@@ -938,7 +938,7 @@ Silakan coba 4 contoh kode praktikum:
 
 ✅ **Next Step:**
 - Coba 4 contoh kode praktikum
-- Integrasikan Blynk ke proyek maket Anda
+- Integrasikan Blynk ke proyek akhir Anda (breadboard + video + poster)
 - Buat dashboard custom sesuai tema proyek
 - Presentasikan dengan demo live!
 
@@ -1143,7 +1143,13 @@ int bacaLDRStabil() {
 
 ---
 
-## 🏠 BAGIAN 4: PANDUAN PROYEK MAKET (50 menit)
+## 🎬 BAGIAN 4: PANDUAN VIDEO & POSTER PROYEK (60 menit)
+
+> **CATATAN PENTING:** Konsep proyek telah diperbarui! Lihat detail lengkap di bawah.
+
+---
+
+## 🏠 BAGIAN 4A: TEMA PROYEK YANG DIREKOMENDASIKAN (Referensi)
 
 ### A. Tema Proyek yang Direkomendasikan
 
@@ -1194,249 +1200,11 @@ int bacaLDRStabil() {
 
 ---
 
-### B. Langkah-Langkah Pembuatan Maket
-
-**FASE 1: Perencanaan (sebelum pertemuan 4)**
-
-1. **Tentukan tema** dari pilihan di atas (atau kreasi sendiri)
-2. **Buat diagram blok sistem:**
-   - Input: Sensor apa saja?
-   - Proses: Logika kontrolnya bagaimana?
-   - Output: Aktuator apa saja?
-3. **Buat flowchart** algoritma
-4. **Sketsa desain maket** (tampak atas, samping)
-5. **Daftar komponen** yang akan digunakan
+**📌 Lihat detail lengkap implementasi proyek di BAGIAN 4B di bawah (Panduan Video & Poster)**
 
 ---
 
-**FASE 2: Prototyping (pertemuan 4 - workshop)**
-
-1. **Test komponen individual**
-   - Upload kode test untuk setiap sensor
-   - Upload kode test untuk setiap aktuator
-   - Pastikan semua berfungsi
-
-2. **Rakit di breadboard**
-   - Mulai dari power (3.3V, 5V, GND)
-   - Tambah sensor satu per satu
-   - Test setiap penambahan sensor
-
-3. **Integrasi kode**
-   - Gabungkan kode sensor + aktuator
-   - Tambahkan logika kontrol
-   - Upload dan test
-
-4. **Troubleshooting**
-   - Cek error satu per satu
-   - Gunakan Serial Monitor untuk debug
-   - Minta bantuan dosen/asisten jika stuck
-
----
-
-**FASE 3: Finalisasi (di rumah)**
-
-1. **Buat maket fisik**
-   - Material: Kardus, styrofoam, atau kayu
-   - Ukuran: Minimal 30x30 cm
-   - Rapi dan kuat (tidak mudah rusak)
-
-2. **Instalasi komponen ke maket**
-   - Pasang ESP32 + breadboard di base
-   - Pasang sensor di posisi yang tepat
-   - Pasang aktuator (LED sebagai simulasi)
-   - OLED display di depan (mudah dibaca)
-
-3. **Wiring rapi**
-   - Gunakan cable management (zip tie, duct tape)
-   - Sembunyikan kabel di dalam maket
-   - Pastikan tidak ada kabel lepas
-
-4. **Testing final**
-   - Test semua skenario
-   - Rekam video demo (backup jika demo gagal)
-
----
-
-**FASE 4: Dokumentasi**
-
-Buat laporan proyek mencakup:
-
-1. **Cover & Identitas Kelompok**
-2. **Abstrak** (ringkasan proyek 1 paragraf)
-3. **Pendahuluan**
-   - Latar belakang
-   - Tujuan proyek
-   - Manfaat
-4. **Tinjauan Pustaka** (teori singkat tentang komponen)
-5. **Metodologi**
-   - Diagram blok sistem
-   - Flowchart algoritma
-   - Wiring diagram
-   - Spesifikasi komponen
-6. **Implementasi**
-   - Foto maket (berbagai sudut)
-   - Penjelasan cara kerja
-   - Kode program (dengan komentar)
-7. **Pengujian & Hasil**
-   - Tabel pengujian (skenario → hasil)
-   - Screenshot Serial Monitor
-   - Foto saat demo
-8. **Kesimpulan & Saran**
-   - Kesimpulan pencapaian
-   - Keterbatasan sistem
-   - Saran pengembangan
-9. **Daftar Pustaka**
-10. **Lampiran** (kode lengkap)
-
----
-
-### C. Kriteria Penilaian
-
-| Aspek | Bobot | Deskripsi |
-|-------|-------|-----------|
-| **Fungsionalitas** | 30% | Sistem bekerja sesuai logika, minimal 2 sensor + 2 output |
-| **Kreativitas** | 20% | Ide menarik, bukan hanya copy paste |
-| **Kerapian Maket** | 15% | Maket rapi, kuat, estetis |
-| **Kode Program** | 15% | Kode rapi, ada komentar, modular |
-| **Presentasi** | 10% | Penjelasan jelas, menjawab pertanyaan |
-| **Dokumentasi** | 10% | Laporan lengkap, sistematis |
-
-**Total: 100%**
-
----
-
-## 📝 BAGIAN 5: TIPS & BEST PRACTICES
-
-### Tips Umum
-
-1. **Mulai Dari yang Sederhana**
-   - Jangan langsung bikin sistem kompleks
-   - Step by step: sensor 1 → test → sensor 2 → test → gabung
-
-2. **Backup Adalah Kunci**
-   - Simpan kode yang sudah jalan di folder berbeda
-   - Buat video demo sebagai backup
-   - Siapkan komponen cadangan
-
-3. **Time Management**
-   - Jangan tunggu mepet deadline
-   - Alokasikan waktu: 60% coding, 40% maket fisik
-
-4. **Kolaborasi Tim**
-   - Pembagian tugas jelas (hardware, software, dokumentasi)
-   - Meeting rutin (minimal 2x seminggu)
-   - Komunikasi lancar (grup chat)
-
-5. **Ask for Help**
-   - Jangan malu bertanya ke dosen/asisten
-   - Manfaatkan forum online (Arduino Forum, Reddit)
-   - Dokumentasikan error untuk konsultasi
-
-### Best Practices Kode
-
-```cpp
-// ✅ GOOD: Nama variabel jelas
-int pinSensorSuhu = 15;
-int pinRelayLampu = 25;
-
-// ❌ BAD: Nama variabel tidak jelas
-int p1 = 15;
-int x = 25;
-
-// ✅ GOOD: Fungsi terpisah
-void bacaSensor() {
-  // kode baca sensor
-}
-
-void kontrolAktuator() {
-  // kode kontrol relay
-}
-
-// ❌ BAD: Semua dalam loop()
-void loop() {
-  // 200 baris kode campur aduk
-}
-
-// ✅ GOOD: Ada error handling
-float suhu = dht.readTemperature();
-if (isnan(suhu)) {
-  Serial.println("Error sensor!");
-  return;  // Skip loop ini
-}
-
-// ❌ BAD: Tidak cek error
-float suhu = dht.readTemperature();
-// Langsung pakai, bisa crash jika NaN
-```
-
-### Best Practices Hardware
-
-1. **Gunakan kabel warna standar:**
-   - Merah: VCC (5V atau 3.3V)
-   - Hitam/Cokelat: GND
-   - Kuning/Orange: Signal
-   - Hijau: SDA (I2C)
-   - Biru: SCL (I2C)
-
-2. **Pasang kapasitor decoupling:**
-   - 100uF di input power ESP32
-   - 0.1uF di setiap sensor
-
-3. **Gunakan terminal block untuk power:**
-   - Jangan cabang power dari breadboard (tidak stabil)
-   - Gunakan terminal block untuk distribusi 5V dan GND
-
----
-
-## 🎯 KESIMPULAN MATA KULIAH
-
-Selamat! Anda telah menyelesaikan pembelajaran tentang:
-
-✅ **Konsep IoT** dan aplikasinya dalam Smart Building
-✅ **ESP32** sebagai platform IoT
-✅ **Sensor** untuk monitoring lingkungan
-✅ **Aktuator** untuk kontrol otomatis
-✅ **Sistem Terintegrasi** yang bekerja secara otomatis
-
-**Skill yang Didapat:**
-- Pemrograman dasar Arduino/ESP32
-- Membaca datasheet dan wiring diagram
-- Troubleshooting hardware & software
-- Integrasi multi-komponen
-- Dokumentasi teknis
-- Kerja tim (kelompok)
-
-**Aplikasi Ilmu:**
-- Smart Home
-- Smart Building
-- IoT dalam arsitektur
-- Building automation
-- Energy management
-
----
-
-## 📚 REFERENSI & SUMBER BELAJAR
-
-**Website:**
-- Arduino Official: https://www.arduino.cc
-- Random Nerd Tutorials: https://randomnerdtutorials.com/esp32-tutorials/
-- Last Minute Engineers: https://lastminuteengineers.com
-- ESP32.com Forum: https://esp32.com
-
-**YouTube Channel:**
-- GreatScott!
-- Andreas Spiess
-- Kelas Robot (Indonesia)
-- Innovative Electronics
-
-**Buku:**
-- "ESP32 Projects" - Neil Cameron
-- "IoT Fundamentals" - David Hanes
-- "Smart Home Automation with Linux and Raspberry Pi" - Steven Goodwin
-
----
-
-## 🎬 BAGIAN 5: PANDUAN VIDEO & POSTER PROYEK
+## 🎬 BAGIAN 4B: PANDUAN VIDEO & POSTER PROYEK (KONSEP BARU!)
 
 ### A. Konsep Baru: Sistem IoT Terpisah dari Maket
 
