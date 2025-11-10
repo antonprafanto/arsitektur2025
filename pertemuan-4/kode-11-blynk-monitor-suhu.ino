@@ -32,36 +32,53 @@
   - Adafruit Unified Sensor (dependency)
 
   Setup Blynk (PENTING!):
-  1. Buat Template baru:
+  ⚠️  Setup HARUS via Blynk Console (web): https://blynk.cloud
+      Bukan hanya via app! App hanya untuk monitoring.
+
+  1. Download app "Blynk IoT" → Buat akun
+  2. [Via WEB] Buka browser → https://blynk.cloud → Login
+  3. [Via WEB] Buat Template baru:
+     - Klik "Templates" → "+ New Template"
      - Name: "Room Monitor"
      - Hardware: ESP32
      - Connection: WiFi
+     - Klik "Done"
 
-  2. Buat Datastream:
+  4. [Via WEB] Buat Datastream (Tab "Datastreams" → "+ New Datastream"):
      a. Datastream 1:
+        - Virtual Pin: V0
         - Name: "Suhu"
-        - Pin: V0
         - Data Type: Double
         - Min: 0, Max: 50
         - Units: °C
      b. Datastream 2:
+        - Virtual Pin: V1
         - Name: "Kelembapan"
-        - Pin: V1
         - Data Type: Double
         - Min: 0, Max: 100
         - Units: %
      c. Datastream 3:
+        - Virtual Pin: V2
         - Name: "Status Sensor"
-        - Pin: V2
         - Data Type: String
 
-  3. Tambah Widget ke Dashboard:
-     a. Gauge widget → Link ke V0 (Suhu)
-     b. Value Display widget → Link ke V1 (Kelembapan)
-     c. Chart widget → Link ke V0 dan V1 (grafik)
-     d. Label widget → Link ke V2 (Status)
+  5. [Via WEB] Tambah Widget ke Dashboard (Tab "Mobile Dashboard"):
+     a. Gauge widget → Datastream: V0 (Suhu)
+     b. Value Display widget → Datastream: V1 (Kelembapan)
+     c. Chart widget → Datastream: V0 dan V1 (grafik)
+     d. Label widget → Datastream: V2 (Status)
 
-  4. Buat Device dan copy Auth Token
+  6. [Via WEB] Buat Device:
+     - Klik "Devices" → "+ New Device" → "From Template"
+     - Pilih "Room Monitor"
+     - Device Name: "ESP32_Monitor"
+     - Klik "Create"
+  7. [Via WEB] Copy Auth Token:
+     - Device Info → Copy BLYNK_AUTH_TOKEN (klik icon ⎘)
+     - Paste ke line 90 di bawah!
+
+  💡 TIP: Auth Token lebih mudah di-copy via web console!
+  📖 Panduan lengkap: Lihat MATERI-PERTEMUAN-4.md Bagian 2B
 
   Cara Menggunakan:
   1. Ubah BLYNK_TEMPLATE_ID, BLYNK_TEMPLATE_NAME, BLYNK_AUTH_TOKEN

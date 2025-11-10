@@ -37,25 +37,62 @@
   - DHT sensor library (by Adafruit)
   - Adafruit Unified Sensor (dependency)
 
-  Setup Blynk:
-  1. Buat Template "Temperature Alert"
+  Setup Blynk (PENTING!):
+  ⚠️  Setup HARUS via Blynk Console (web): https://blynk.cloud
+      Bukan hanya via app! App hanya untuk monitoring.
 
-  2. Buat Event (untuk notifikasi):
+  1. Download app "Blynk IoT" → Buat akun
+  2. [Via WEB] Buka browser → https://blynk.cloud → Login
+  3. [Via WEB] Buat Template baru:
+     - Klik "Templates" → "+ New Template"
+     - Name: "Temperature Alert"
+     - Hardware: ESP32
+     - Connection: WiFi
+     - Klik "Done"
+
+  4. [Via WEB] Buat Event untuk Notifikasi (Tab "Events" → "+ New Event"):
      - Event Code: high_temp
      - Name: "High Temperature Alert"
      - Description: "Temperature exceeded threshold!"
      - Type: Warning (kuning) atau Critical (merah)
      - Enable Notification: ON
+     - Klik "Create"
 
-  3. Buat Datastream:
-     - V0: Suhu (Double, 0-50, °C)
-     - V1: Threshold (Integer, 25-35, °C)
-     - V2: Status (String)
+  5. [Via WEB] Buat Datastream (Tab "Datastreams" → "+ New Datastream"):
+     a. Datastream 1:
+        - Virtual Pin: V0
+        - Name: "Suhu"
+        - Data Type: Double
+        - Min: 0, Max: 50
+        - Units: °C
+     b. Datastream 2:
+        - Virtual Pin: V1
+        - Name: "Threshold"
+        - Data Type: Integer
+        - Min: 25, Max: 35
+        - Default: 30
+        - Units: °C
+     c. Datastream 3:
+        - Virtual Pin: V2
+        - Name: "Status"
+        - Data Type: String
 
-  4. Tambah Widget:
-     - Gauge → V0 (Suhu real-time)
-     - Slider → V1 (Atur threshold, 25-35)
-     - Label → V2 (Status alert)
+  6. [Via WEB] Tambah Widget ke Dashboard (Tab "Mobile Dashboard"):
+     - Gauge widget → Datastream: V0 (Suhu real-time)
+     - Slider widget → Datastream: V1 (Atur threshold, 25-35)
+     - Label widget → Datastream: V2 (Status alert)
+
+  7. [Via WEB] Buat Device:
+     - Klik "Devices" → "+ New Device" → "From Template"
+     - Pilih "Temperature Alert"
+     - Device Name: "ESP32_Temp_Alert"
+     - Klik "Create"
+  8. [Via WEB] Copy Auth Token:
+     - Device Info → Copy BLYNK_AUTH_TOKEN (klik icon ⎘)
+     - Paste ke line 81 di bawah!
+
+  💡 TIP: Auth Token lebih mudah di-copy via web console!
+  📖 Panduan lengkap: Lihat MATERI-PERTEMUAN-4.md Bagian 2B
 
   Kriteria Penilaian:
   ✓ Notification terkirim saat suhu > threshold (35%)

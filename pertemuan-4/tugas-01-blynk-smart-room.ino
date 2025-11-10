@@ -45,20 +45,66 @@
   - DHT sensor library (by Adafruit)
   - Adafruit Unified Sensor (dependency)
 
-  Setup Blynk:
-  1. Buat Template "Smart Room Monitor"
-  2. Buat Datastream:
-     - V0: Suhu (Double, 0-50, °C)
-     - V1: Kelembapan (Double, 0-100, %)
-     - V2: Cahaya (Integer, 0-4095, Lux)
-     - V3: Gerakan (Integer, 0-1)
-     - V4: Status (String)
-  3. Tambah Widget:
-     - Gauge → V0 (Suhu)
-     - Value Display → V1 (Kelembapan)
-     - Value Display → V2 (Cahaya)
-     - LED → V3 (Gerakan)
-     - Label → V4 (Status)
+  Setup Blynk (PENTING!):
+  ⚠️  Setup HARUS via Blynk Console (web): https://blynk.cloud
+      Bukan hanya via app! App hanya untuk monitoring.
+
+  1. Download app "Blynk IoT" → Buat akun
+  2. [Via WEB] Buka browser → https://blynk.cloud → Login
+  3. [Via WEB] Buat Template baru:
+     - Klik "Templates" → "+ New Template"
+     - Name: "Smart Room Monitor"
+     - Hardware: ESP32
+     - Connection: WiFi
+     - Klik "Done"
+
+  4. [Via WEB] Buat Datastream (Tab "Datastreams" → "+ New Datastream"):
+     a. Datastream 1:
+        - Virtual Pin: V0
+        - Name: "Suhu"
+        - Data Type: Double
+        - Min: 0, Max: 50
+        - Units: °C
+     b. Datastream 2:
+        - Virtual Pin: V1
+        - Name: "Kelembapan"
+        - Data Type: Double
+        - Min: 0, Max: 100
+        - Units: %
+     c. Datastream 3:
+        - Virtual Pin: V2
+        - Name: "Cahaya"
+        - Data Type: Integer
+        - Min: 0, Max: 4095
+        - Units: Lux
+     d. Datastream 4:
+        - Virtual Pin: V3
+        - Name: "Gerakan"
+        - Data Type: Integer
+        - Min: 0, Max: 1
+     e. Datastream 5:
+        - Virtual Pin: V4
+        - Name: "Status"
+        - Data Type: String
+
+  5. [Via WEB] Tambah Widget ke Dashboard (Tab "Mobile Dashboard"):
+     - Gauge widget → Datastream: V0 (Suhu)
+     - Value Display widget → Datastream: V1 (Kelembapan)
+     - Value Display widget → Datastream: V2 (Cahaya)
+     - LED widget → Datastream: V3 (Gerakan)
+     - Label widget → Datastream: V4 (Status)
+
+  6. [Via WEB] Buat Device:
+     - Klik "Devices" → "+ New Device" → "From Template"
+     - Pilih "Smart Room Monitor"
+     - Device Name: "ESP32_Smart_Room"
+     - Klik "Create"
+  7. [Via WEB] Copy Auth Token:
+     - Device Info → Copy BLYNK_AUTH_TOKEN (klik icon ⎘)
+     - Paste ke line 84 di bawah!
+
+  💡 TIP: Auth Token lebih mudah di-copy via web console!
+  📖 Panduan lengkap: Lihat MATERI-PERTEMUAN-4.md Bagian 2B
 
   Kriteria Penilaian:
   ✓ Semua sensor terbaca dengan benar (30%)

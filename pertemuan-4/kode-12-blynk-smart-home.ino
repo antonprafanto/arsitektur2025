@@ -70,24 +70,76 @@
   - Adafruit GFX Library
 
   Setup Blynk (PENTING!):
-  1. Buat Template: "Smart Home"
-  2. Buat Datastream:
-     - V0: Suhu (Double, 0-50, °C)
-     - V1: Kelembapan (Double, 0-100, %)
-     - V2: Intensitas Cahaya (Integer, 0-4095)
-     - V3: Status PIR (Integer, 0-1)
-     - V4: Kontrol AC (Integer, 0-1)
-     - V5: Kontrol Lampu (Integer, 0-1)
-     - V6: Status Sistem (String)
-  3. Tambah Widget:
-     - Gauge → V0 (Suhu)
-     - Value Display → V1 (Kelembapan)
-     - Value Display → V2 (Cahaya)
-     - LED indicator → V3 (PIR)
-     - Button (Switch) → V4 (AC)
-     - Button (Switch) → V5 (Lampu)
-     - Label → V6 (Status)
-  4. Buat Device dan copy Auth Token
+  ⚠️  Setup HARUS via Blynk Console (web): https://blynk.cloud
+      Bukan hanya via app! App hanya untuk monitoring.
+
+  1. Download app "Blynk IoT" → Buat akun
+  2. [Via WEB] Buka browser → https://blynk.cloud → Login
+  3. [Via WEB] Buat Template baru:
+     - Klik "Templates" → "+ New Template"
+     - Name: "Smart Home"
+     - Hardware: ESP32
+     - Connection: WiFi
+     - Klik "Done"
+
+  4. [Via WEB] Buat Datastream (Tab "Datastreams" → "+ New Datastream"):
+     a. Datastream 1:
+        - Virtual Pin: V0
+        - Name: "Suhu"
+        - Data Type: Double
+        - Min: 0, Max: 50
+        - Units: °C
+     b. Datastream 2:
+        - Virtual Pin: V1
+        - Name: "Kelembapan"
+        - Data Type: Double
+        - Min: 0, Max: 100
+        - Units: %
+     c. Datastream 3:
+        - Virtual Pin: V2
+        - Name: "Intensitas Cahaya"
+        - Data Type: Integer
+        - Min: 0, Max: 4095
+     d. Datastream 4:
+        - Virtual Pin: V3
+        - Name: "Status PIR"
+        - Data Type: Integer
+        - Min: 0, Max: 1
+     e. Datastream 5:
+        - Virtual Pin: V4
+        - Name: "Kontrol AC"
+        - Data Type: Integer
+        - Min: 0, Max: 1
+     f. Datastream 6:
+        - Virtual Pin: V5
+        - Name: "Kontrol Lampu"
+        - Data Type: Integer
+        - Min: 0, Max: 1
+     g. Datastream 7:
+        - Virtual Pin: V6
+        - Name: "Status Sistem"
+        - Data Type: String
+
+  5. [Via WEB] Tambah Widget ke Dashboard (Tab "Mobile Dashboard"):
+     a. Gauge widget → Datastream: V0 (Suhu)
+     b. Value Display widget → Datastream: V1 (Kelembapan)
+     c. Value Display widget → Datastream: V2 (Cahaya)
+     d. LED widget → Datastream: V3 (PIR)
+     e. Button widget → Datastream: V4 (AC), Mode: Switch
+     f. Button widget → Datastream: V5 (Lampu), Mode: Switch
+     g. Label widget → Datastream: V6 (Status)
+
+  6. [Via WEB] Buat Device:
+     - Klik "Devices" → "+ New Device" → "From Template"
+     - Pilih "Smart Home"
+     - Device Name: "ESP32_Smart_Home"
+     - Klik "Create"
+  7. [Via WEB] Copy Auth Token:
+     - Device Info → Copy BLYNK_AUTH_TOKEN (klik icon ⎘)
+     - Paste ke line 115 di bawah!
+
+  💡 TIP: Auth Token lebih mudah di-copy via web console!
+  📖 Panduan lengkap: Lihat MATERI-PERTEMUAN-4.md Bagian 2B
 
   Cara Menggunakan:
   1. Rakit rangkaian sesuai diagram di atas

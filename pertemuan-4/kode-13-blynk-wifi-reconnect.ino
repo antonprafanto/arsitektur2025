@@ -40,11 +40,38 @@
   - WiFi (built-in ESP32)
   - Blynk (by Volodymyr Shymanskyy)
 
-  Setup Blynk:
-  1. Buat Template "Reconnect Demo"
-  2. Buat Datastream V0 (String) untuk status
-  3. Tambah Label widget linked ke V0
-  4. Copy Auth Token
+  Setup Blynk (PENTING!):
+  ⚠️  Setup HARUS via Blynk Console (web): https://blynk.cloud
+      Bukan hanya via app! App hanya untuk monitoring.
+
+  1. Download app "Blynk IoT" → Buat akun
+  2. [Via WEB] Buka browser → https://blynk.cloud → Login
+  3. [Via WEB] Buat Template baru:
+     - Klik "Templates" → "+ New Template"
+     - Name: "Reconnect Demo"
+     - Hardware: ESP32
+     - Connection: WiFi
+     - Klik "Done"
+
+  4. [Via WEB] Buat Datastream (Tab "Datastreams" → "+ New Datastream"):
+     - Virtual Pin: V0
+     - Name: "Status"
+     - Data Type: String
+
+  5. [Via WEB] Tambah Widget ke Dashboard (Tab "Mobile Dashboard"):
+     - Label widget → Datastream: V0 (Status)
+
+  6. [Via WEB] Buat Device:
+     - Klik "Devices" → "+ New Device" → "From Template"
+     - Pilih "Reconnect Demo"
+     - Device Name: "ESP32_Reconnect"
+     - Klik "Create"
+  7. [Via WEB] Copy Auth Token:
+     - Device Info → Copy BLYNK_AUTH_TOKEN (klik icon ⎘)
+     - Paste ke line 69 di bawah!
+
+  💡 TIP: Auth Token lebih mudah di-copy via web console!
+  📖 Panduan lengkap: Lihat MATERI-PERTEMUAN-4.md Bagian 2B
 
   Cara Menggunakan:
   1. Ubah credentials Blynk

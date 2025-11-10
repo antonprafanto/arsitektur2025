@@ -34,24 +34,47 @@
     Cari "Blynk" dan install yang by Volodymyr Shymanskyy
 
   Setup Blynk (PENTING!):
+  ⚠️  Setup HARUS via Blynk Console (web): https://blynk.cloud
+      Bukan hanya via app! App hanya untuk monitoring.
+
   1. Download app "Blynk IoT" (bukan "Blynk Legacy")
-  2. Buat akun baru
-  3. Buat Template baru:
+  2. Buat akun baru di app
+  3. [Via WEB] Buka browser → https://blynk.cloud → Login
+  4. [Via WEB] Buat Template baru:
+     - Klik "Templates" (sidebar kiri) → "+ New Template"
      - Name: "LED Control"
      - Hardware: ESP32
      - Connection: WiFi
-  4. Buat Datastream:
+     - Klik "Done"
+  5. [Via WEB] Buat Datastream:
+     - Masuk ke Template "LED Control"
+     - Tab "Datastreams" → "+ New Datastream" → "Virtual Pin"
      - Name: "LED Status"
      - Pin: V0
      - Data Type: Integer
      - Min: 0, Max: 1
-  5. Tambah Button Widget:
-     - Linked to: V0
+     - Klik "Create"
+  6. [Via WEB] Tambah Button Widget:
+     - Tab "Web Dashboard" atau "Mobile Dashboard"
+     - Drag "Button" widget ke canvas
+     - Linked to: V0 (LED Status)
      - Mode: Switch (bukan Push)
      - ON Label: "LED ON"
      - OFF Label: "LED OFF"
-  6. Buat Device dari template
-  7. COPY Auth Token (butuh untuk kode!)
+     - Klik "Save"
+  7. [Via WEB] Buat Device dari template:
+     - Klik "Devices" (sidebar kiri) → "+ New Device" → "From Template"
+     - Pilih template "LED Control"
+     - Device Name: "ESP32_LED"
+     - Klik "Create"
+  8. [Via WEB] COPY Auth Token:
+     - Klik device yang baru dibuat
+     - Tab "Device Info"
+     - Klik icon copy (⎘) di samping BLYNK_AUTH_TOKEN
+     - Paste ke line 80 di bawah!
+
+  💡 TIP: Auth Token lebih mudah di-copy via web console!
+  📖 Panduan lengkap: Lihat MATERI-PERTEMUAN-4.md Bagian 2B
 
   Cara Menggunakan:
   1. Ubah BLYNK_TEMPLATE_ID, BLYNK_TEMPLATE_NAME, BLYNK_AUTH_TOKEN
