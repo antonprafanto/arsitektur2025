@@ -275,19 +275,26 @@ Dengan Blynk, kita bisa:
 
 #### Langkah 3: Buat Template Pertama
 
-**Di Blynk App:**
+**RECOMMENDED: Setup via Blynk Web Console (Lebih Mudah & Lengkap)**
 
-1. Tap **"+ New Template"**
+1. Buka browser, kunjungi: **https://blynk.cloud**
+2. Login dengan akun yang sama dengan app
+3. Klik menu **"Templates"** (sidebar kiri)
+4. Klik **"+ New Template"**
+5. Isi form:
+   - **Name:** "Smart Room Monitor"
+   - **Hardware:** ESP32
+   - **Connection Type:** WiFi
+6. Klik **"Done"**
+
+**Alternatif: Via Blynk App (Jika Tidak Ada Akses Web)**
+
+1. Tap **"+ New Template"** atau **"Developer Zone"** → **"My Templates"**
 2. Isi:
    - **Name:** "Smart Room Monitor"
    - **Hardware:** ESP32
    - **Connection Type:** WiFi
 3. Tap **"Create"**
-
-**Di Blynk Web Console (opsional, lebih lengkap):**
-- Buka https://blynk.cloud
-- Login dengan akun yang sama
-- Pilih **"Templates"** → **"New Template"**
 
 ---
 
@@ -354,12 +361,35 @@ Ulangi untuk datastream lain:
 
 #### Langkah 6: Buat Device & Dapatkan Auth Token
 
+**⚠️ PENTING: Untuk mendapatkan Auth Token, HARUS melalui Blynk Console (web)!**
+
+**Cara 1: Via Blynk Web Console (RECOMMENDED - Lebih Mudah Copy Token)**
+
+1. Buka browser, kunjungi: **https://blynk.cloud**
+2. Login dengan akun yang sama dengan app
+3. Klik menu **"Devices"** (sidebar kiri)
+4. Klik **"+ New Device"** → **"From Template"**
+5. Pilih template "Smart Room Monitor"
+6. Isi **Device Name:** "ESP32_Ruang_101"
+7. Klik **"Create"**
+8. Setelah device dibuat, klik device tersebut
+9. Klik tab **"Device Info"**
+10. **COPY 3 CREDENTIALS INI** (klik icon copy ⎘ di samping):
+    - **BLYNK_TEMPLATE_ID**
+    - **BLYNK_TEMPLATE_NAME**
+    - **BLYNK_AUTH_TOKEN** ← INI YANG PALING PENTING!
+
+**Cara 2: Via Blynk App (Agak Sulit Copy Token)**
+
 1. Keluar dari Template editor
-2. Pilih menu **"Devices"**
+2. Tap menu **"Devices"**
 3. Tap **"+ New Device"** → **"From Template"**
 4. Pilih template "Smart Room Monitor"
 5. Isi **Device Name:** "ESP32_Ruang_101"
 6. Tap **"Create"**
+7. Tap device yang baru dibuat
+8. Tap **"Device Info"** atau icon ⚙️
+9. Copy credentials (agak susah karena harus manual select text)
 
 **PENTING: Simpan 3 Credentials ini!**
 
