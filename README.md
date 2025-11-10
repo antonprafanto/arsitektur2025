@@ -69,7 +69,7 @@ arsi2025/
 │   └── tugas-03-template-proyek.md    (Template Proyek Akhir)
 │
 ├── pertemuan-4/                       ✅ LENGKAP
-│   ├── MATERI-PERTEMUAN-4.md          (Integrasi & Proyek Maket)
+│   ├── MATERI-PERTEMUAN-4.md          (Platform IoT & Konsep Proyek)
 │   ├── kode-10-blynk-led-control.ino  (Kontrol LED via Blynk)
 │   ├── kode-11-blynk-monitor-suhu.ino (Monitoring DHT11 via App)
 │   ├── kode-12-blynk-smart-home.ino   (Smart Home + Blynk)
