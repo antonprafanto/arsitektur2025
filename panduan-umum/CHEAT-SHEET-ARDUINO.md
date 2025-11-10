@@ -312,11 +312,19 @@ void loop() {
 ## ☁️ BLYNK IoT PLATFORM
 
 ### Setup Blynk
+
+> **📌 Cara Dapat Credentials:**
+> 1. Buka browser → https://blynk.cloud → Login
+> 2. Buat Template & Datastream (via web console)
+> 3. Buat Device → Copy **BLYNK_AUTH_TOKEN** (klik icon ⎘)
+>
+> **Detail lengkap:** Lihat MATERI-PERTEMUAN-4.md Bagian 2B
+
 ```cpp
 #include <WiFi.h>
 #include <BlynkSimpleEsp32.h>
 
-// Credentials (dari Blynk Console)
+// Credentials (dari Blynk Console - https://blynk.cloud)
 #define BLYNK_TEMPLATE_ID "TMPL4xxxxxxxxx"
 #define BLYNK_TEMPLATE_NAME "Project Name"
 #define BLYNK_AUTH_TOKEN "your-auth-token-32-chars"

@@ -657,8 +657,9 @@ void loop() {
 
 **Solusi:**
 1. **Cek Auth Token:**
-   - Buka Blynk app → Device → Info → Auth Token
-   - Copy ulang (jangan ketik manual)
+   - **Via WEB (RECOMMENDED):** Buka browser → https://blynk.cloud → Devices → Pilih device → Device Info → Copy BLYNK_AUTH_TOKEN (klik icon ⎘)
+   - Via App: Buka Blynk app → Device → Info → Auth Token (susah copy di HP)
+   - Copy ulang dengan teliti (jangan ketik manual)
    - Pastikan tidak ada spasi di awal/akhir
    ```cpp
    #define BLYNK_AUTH_TOKEN "abcdefgh123456789ijklmnopqrstuv"

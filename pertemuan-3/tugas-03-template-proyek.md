@@ -488,7 +488,7 @@ A: TIDAK WAJIB. Fokus ke sistem IoT di breadboard + video + poster. Maket fisik 
 A: Minimal 2 sensor + 2 output. Recommended: 3 sensor + 3 output untuk konsep lebih kaya.
 
 **Q: Apakah Blynk wajib?**
-A: YA, Blynk wajib untuk monitoring via smartphone (sesuai materi Pertemuan 4).
+A: YA, Blynk wajib untuk monitoring via smartphone (sesuai materi Pertemuan 4). Setup HARUS via Blynk Console (web): https://blynk.cloud. Panduan lengkap ada di MATERI-PERTEMUAN-4.md Bagian 2B.
 
 **Q: Boleh pakai sensor lain selain yang diajarkan?**
 A: Boleh, tapi harus konsultasi dosen dulu. Pastikan ada library Arduino-nya.
