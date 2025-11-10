@@ -21,7 +21,7 @@
   - Kabel jumper
 
   Koneksi Rangkaian:
-  LED Anode (+)  --->  Resistor 220Ω  --->  ESP32 GPIO2
+  LED Anode (+)  --->  Resistor 220Ω  --->  ESP32 GPIO4
   LED Cathode (-) --->  ESP32 GND
 
   (LED built-in ESP32 ada di GPIO2, jadi bisa langsung
