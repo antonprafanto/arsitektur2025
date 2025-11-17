@@ -67,12 +67,15 @@
      - Pilih template "LED Control"
      - Device Name: "ESP32_LED"
      - Klik "Create"
-  8. [Via WEB] COPY Auth Token:
-     - Klik device yang baru dibuat
-     - Tab "Device Info"
-     - Klik icon copy (⎘) di samping BLYNK_AUTH_TOKEN
-     - Paste ke line 96 di bawah (ganti "TMPL4xxxxxxxxx")!
+  8. [Via WEB] COPY 3 Credentials (PENTING!):
+     - Klik device yang baru dibuat → Tab "Device Info"
+     - Copy SEMUA credentials (klik icon ⎘ di setiap baris):
+       a. BLYNK_TEMPLATE_ID (contoh: TMPL4xRa1bXYZ)
+       b. BLYNK_TEMPLATE_NAME (contoh: "LED Control")
+       c. BLYNK_AUTH_TOKEN (contoh: abcd1234...) ← PALING PENTING!
+     - Paste ke line 96-98 di bawah, GANTI SEMUA placeholder!
 
+  ⚠️ WAJIB GANTI KETIGA-TIGANYA! Jika hanya ganti satu, Blynk tidak akan connect!
   💡 TIP: Auth Token lebih mudah di-copy via web console!
   📖 Panduan lengkap: Lihat MATERI-PERTEMUAN-4.md Bagian 2B
 

@@ -87,10 +87,15 @@
      - Pilih "Temperature Alert"
      - Device Name: "ESP32_Temp_Alert"
      - Klik "Create"
-  8. [Via WEB] Copy Auth Token:
-     - Device Info → Copy BLYNK_AUTH_TOKEN (klik icon ⎘)
-     - Paste ke line 112 di bawah (ganti "TMPL4xxxxxxxxx")!
+  8. [Via WEB] COPY 3 Credentials (PENTING!):
+     - Klik device yang baru dibuat → Tab "Device Info"
+     - Copy SEMUA credentials (klik icon ⎘ di setiap baris):
+       a. BLYNK_TEMPLATE_ID (contoh: TMPL4xRa1bXYZ)
+       b. BLYNK_TEMPLATE_NAME (contoh: "Temperature Alert")
+       c. BLYNK_AUTH_TOKEN (contoh: abcd1234...) ← PALING PENTING!
+     - Paste ke line 112-114 di bawah, GANTI SEMUA placeholder!
 
+  ⚠️ WAJIB GANTI KETIGA-TIGANYA! Jika hanya ganti satu, Blynk tidak akan connect!
   💡 TIP: Auth Token lebih mudah di-copy via web console!
   📖 Panduan lengkap: Lihat MATERI-PERTEMUAN-4.md Bagian 2B
 

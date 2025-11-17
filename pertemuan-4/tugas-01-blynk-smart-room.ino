@@ -99,10 +99,15 @@
      - Pilih "Smart Room Monitor"
      - Device Name: "ESP32_Smart_Room"
      - Klik "Create"
-  7. [Via WEB] Copy Auth Token:
-     - Device Info → Copy BLYNK_AUTH_TOKEN (klik icon ⎘)
-     - Paste ke line 124 di bawah (ganti "TMPL4xxxxxxxxx")!
+  7. [Via WEB] COPY 3 Credentials (PENTING!):
+     - Klik device yang baru dibuat → Tab "Device Info"
+     - Copy SEMUA credentials (klik icon ⎘ di setiap baris):
+       a. BLYNK_TEMPLATE_ID (contoh: TMPL4xRa1bXYZ)
+       b. BLYNK_TEMPLATE_NAME (contoh: "Smart Room Monitor")
+       c. BLYNK_AUTH_TOKEN (contoh: abcd1234...) ← PALING PENTING!
+     - Paste ke line 124-126 di bawah, GANTI SEMUA placeholder!
 
+  ⚠️ WAJIB GANTI KETIGA-TIGANYA! Jika hanya ganti satu, Blynk tidak akan connect!
   💡 TIP: Auth Token lebih mudah di-copy via web console!
   📖 Panduan lengkap: Lihat MATERI-PERTEMUAN-4.md Bagian 2B
 
@@ -323,12 +328,12 @@ String generateStatus() {
   status += " | ";
 
   // Status Cahaya
-  if (cahaya < 1000) {
+  if (cahaya > 2500) {
     status += "🌙 Gelap";
-  } else if (cahaya >= 1000 && cahaya < 2500) {
+  } else if (cahaya >= 1000 && cahaya <= 2500) {
     status += "💡 Redup";
   } else {
-    status += "☀️ Terang";
+    status += "☀️ Terang";  // < 1000
   }
 
   status += " | ";
@@ -357,12 +362,12 @@ void tampilkanSerial() {
   Serial.print("[LDR]   Cahaya: ");
   Serial.print(cahaya);
   Serial.print(" (");
-  if (cahaya < 1000) {
+  if (cahaya > 2500) {
     Serial.print("Gelap");
-  } else if (cahaya >= 1000 && cahaya < 2500) {
+  } else if (cahaya >= 1000 && cahaya <= 2500) {
     Serial.print("Redup");
   } else {
-    Serial.print("Terang");
+    Serial.print("Terang");  // < 1000
   }
   Serial.println(")");
 
@@ -425,10 +430,13 @@ BLYNK_CONNECTED() {
      - 24-28°C = Nyaman
      - > 28°C = Panas
 
-     Cahaya:
-     - < 1000 = Gelap (lampu perlu dinyalakan)
+     Cahaya (LDR dengan wiring pull-up):
+     - > 2500 = Gelap (lampu perlu dinyalakan)
      - 1000-2500 = Redup (cahaya cukup)
-     - > 2500 = Terang (cahaya berlebih)
+     - < 1000 = Terang (cahaya berlebih)
+
+     💡 Catatan: Wiring LDR pull-up (3.3V → LDR → GPIO → 10K → GND)
+        menghasilkan nilai ADC TINGGI saat gelap, RENDAH saat terang.
 
      Gerakan:
      - 0 = Tidak ada gerakan (ruangan kosong)
