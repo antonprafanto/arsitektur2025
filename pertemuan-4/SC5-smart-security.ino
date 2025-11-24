@@ -55,7 +55,7 @@ char pass[] = "PASSWORD_WIFI_ANDA";
 // ===== PINS =====
 #define DHTPIN 15
 #define DHTTYPE DHT11
-#define PIR PIN 27
+#define PIRPIN 27
 #define LDRPIN 34
 
 // Buttons

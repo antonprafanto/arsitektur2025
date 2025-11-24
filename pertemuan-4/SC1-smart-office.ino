@@ -46,7 +46,7 @@
   - DHT sensor library (by Adafruit)
 
   Setup Blynk:
-  📖 Lihat STUDI-KASUS-BLYNK-LENGKAP.md untuk panduan lengkap!
+  📖 Lihat SC1-SMART-OFFICE.md untuk panduan lengkap!
 
   Instruktur: Anton Prafanto, S.Kom., M.T.
   ===================================================================
