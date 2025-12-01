@@ -156,7 +156,7 @@ Sesuai dengan [README.md](file:///c:/Users/anton/arsi2025/README.md#L22-L33):
 ### 1️⃣ 3D MAKET (25%)
 
 **Format:**
-- Video (MP4, maks 5 menit) **ATAU**
+- Video (MP4, maks 10 menit) **ATAU**
 - Gambar (PNG/JPG, minimal 3 view berbeda)
 
 **Konten yang Harus Ditampilkan:**
@@ -912,3 +912,4 @@ KELOMPOK: _____________  KONSEP: _____________
 ```
 
 **Good Luck! 🎉**
+
