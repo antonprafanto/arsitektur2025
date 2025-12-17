@@ -239,12 +239,23 @@ void kontrolOtomatis() {
   if (suhu > SUHU_BAHAYA) {
     digitalWrite(BUZZER, HIGH);
     setStatusLED(2);  // Red
+    delay(1000);
   } else if (suhu > SUHU_TINGGI) {
     digitalWrite(BUZZER, LOW);
     setStatusLED(1);  // Yellow
+    delay(1000);
   } else {
     digitalWrite(BUZZER, LOW);
     setStatusLED(0);  // Green
+    delay(1000);
+  }
+
+  //Buzzer & PIR
+  if (gerakan == HIGH){
+    digitalWrite(BUZZER, HIGH);
+    delay(1000);
+  }else{
+    digitalWrite(BUZZER, HIGH);
   }
 }
 
@@ -439,3 +450,4 @@ BLYNK_CONNECTED() {
   display.display();
   delay(1000);
 }
+
